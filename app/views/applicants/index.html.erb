@@ -1,0 +1,40 @@
+<h1>Review Photo Applicants</h1>
+
+<p class="sort-detials"><%= @sort_text %></p>
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+	  <th class="col-evaluated"></th>
+    <th class="col-lname"><%= link_to "Last Name", applicants_url(:sort => "lname") %>,</th>
+    <th class="col-fname"><%= link_to "First Name", applicants_url(:sort => "fname") %></th>
+    <th class="col-date"><%= link_to "Date Applied", applicants_url(:sort => "date") %></th>
+    <th class="col-score">Score</th>
+    <th class="col-average"><%= link_to "Average Score", applicants_url(:sort => "average") %></th>
+    <th class="col-stddev"><%= link_to "Standard Deviation", applicants_url(:sort => "deviation") %></th>
+    <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
+  </tr>
+
+<% @applicants.each do |applicant| %>
+	<% evaluation = applicant.member_responses.find_by_member_id(@current_member.id) %>
+  <tr class="<%= 'evaluated' if evaluation %>">
+    <td class="col-evaluated"><%= evaluation ? "<span class='evaluated-yes'>Evaluated</span>".html_safe : "<span class='evaluated-no'>Needs Evaluation</span>".html_safe %></td>
+    <td class="col-lname"><%= applicant.lname %>,</td>
+    <td class="col-fname"><%= applicant.fname %></td>
+    <td class="col-date"><%= applicant.date_applied %></td>
+		<td class="col-score"><%= evaluation.score if evaluation %></td>
+		<td class="col-average"><%= applicant.average_score %></td>
+		<td class="col-stddev"><%= applicant.average_score_precision %></td>
+		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
+    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
+  </tr>
+<% end %>
+</table>
+<p><%= @applicants.size %> applicants listed</p>
+<p><%= image_tag "checkmark.png" %> = You have evaluated this applicant</p>
+<p><%= image_tag "checkbox.png" %> = You have not evaluated this applicant</p>
+
+
+
+<br />
+
+<%= link_to 'New Applicant', new_applicant_path if @current_member.id == 1  %>

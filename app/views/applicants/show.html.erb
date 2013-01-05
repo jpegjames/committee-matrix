@@ -1,0 +1,175 @@
+<h1>Evaluation responses for <%= @applicant %></h1>
+
+<style type="text/css" media="screen">
+	tr td:first-child {
+		border-bottom: 1px solid #ccc;
+	}
+</style>
+
+<table border="0" cellspacing="1" cellpadding="0" class="responses">
+	<tr>
+		<th class="col-questions"></th>
+		<% @responses.each do |response| %>
+			<th class="col-member"><%= response.member.name %></th>
+		<% end %>
+		<th class="col-comments">Comments</th>
+	</tr>
+	<tr>
+		<td>
+			<strong>Teaching Experience</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q1a %>"><%= response.q1a if response.q1a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q1c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q1c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Darkroom Experience</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q2a %>"><%= response.q2a if response.q2a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q2c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q2c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Digital Experience</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q3a %>"><%= response.q3a if response.q3a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q3c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q3c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Teaching Statement</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q4a %>"><%= response.q4a if response.q4a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q4c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q4c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Application Information</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q5c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q5c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Cover Letter Articulation</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q6a %>"><%= response.q6a if response.q6a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q6c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q6c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Personal Work</strong><br>(if applicable)
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q7a %>"><%= response.q7a if response.q7a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q7c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q7c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Student Work</strong><br>(if applicable)
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q8a %>"><%= response.q8a if response.q8a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q8c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q8c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Ability to Complement Dept</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q9a %>"><%= response.q9a if response.q9a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q9c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q9c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<!-- <tr>
+		<td>Question 10</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q10a %>"><%= response.q10a if response.q10a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q10c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q10c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr> -->
+</table>
+
+<h2>General Comments</h2>
+<% @responses.each do |response| %>
+	<% if response.general_comments != "" %>
+		<p><b><%= response.member.name %>:</b> <%= response.general_comments %></p>
+	<% end %>
+<% end %>
+
+
+<p><%= link_to 'Back', applicants_path %></p>

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  q1a: 1
+  q1c: MyText
+  q2a: 1
+  q2c: MyText
+  q3a: 1
+  q3c: MyText
+  q4a: 1
+  q4c: MyText
+  q5a: 1
+  q5c: MyText
+  q6a: 1
+  q6c: MyText
+  q7a: 1
+  q7c: MyText
+  q8a: 1
+  q8c: MyText
+  q9a: 1
+  q9c: MyText
+  q10a: 1
+  q10c: MyText
+
+two:
+  q1a: 1
+  q1c: MyText
+  q2a: 1
+  q2c: MyText
+  q3a: 1
+  q3c: MyText
+  q4a: 1
+  q4c: MyText
+  q5a: 1
+  q5c: MyText
+  q6a: 1
+  q6c: MyText
+  q7a: 1
+  q7c: MyText
+  q8a: 1
+  q8c: MyText
+  q9a: 1
+  q9c: MyText
+  q10a: 1
+  q10c: MyText

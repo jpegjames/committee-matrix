@@ -1,0 +1,28 @@
+<h1>Log in</h1>
+
+<style type="text/css" media="screen">
+	label {
+		width: 100px;
+		display: inline-block;
+	}
+	input[type="text"], input[type="password"] {
+		width: 200px;
+	}
+	.field {
+		margin-bottom: 0 !important;
+	}
+</style>
+
+<%= form_tag :action => "create" do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Log in" %></div>
+<% end %>
+
+<p>*email James if you forget your password</p>
