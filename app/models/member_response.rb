@@ -2,7 +2,7 @@ class MemberResponse < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :member
   
-  attr_accessible :q1a, :q1c, :q2a, :q2c, :q3a, :q3c, :q4a, :q4c, :q5a, :q5c, :q6a, :q6c, :q7a, :q7c, :q8a, :q8c, :q9a, :q9c, :q10a, :q10c, :general_comments
+  attr_accessible :q1a, :q1c, :q2a, :q2c, :q3a, :q3c, :q4a, :q4c, :q5a, :q5c, :q6a, :q6c, :q7a, :q7c, :q8a, :q8c, :q9a, :q9c, :q10a, :q10c, :general_comments, :skype_vote
   
   before_save :calculate_score
   after_save :calculate_average_score
@@ -83,7 +83,16 @@ class MemberResponse < ActiveRecord::Base
     
       # Calculate Standard Deviation
       applicant.average_score_precision = "%0.4f" % Math.sqrt(variance)
-      applicant.save
     end
+    
+    # Tally Skype Votes
+    skype_votes_total = 0
+    responses.each do |response|
+      skype_votes_total += 1 if response.skype_vote == true
+    end 
+    applicant.skype_vote_total = skype_votes_total
+    
+    
+    applicant.save
   end
 end

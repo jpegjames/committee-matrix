@@ -2,6 +2,8 @@
 
 <p class="sort-detials"><%= @sort_text %></p>
 
+<p>You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p>
+
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
 	  <th class="col-evaluated"></th>
@@ -11,6 +13,7 @@
     <th class="col-score">Score</th>
     <th class="col-average"><%= link_to "Average Score", applicants_url(:sort => "average") %></th>
     <th class="col-stddev"><%= link_to "Standard Deviation", applicants_url(:sort => "deviation") %></th>
+    <th class="col-skype"><%= link_to "Skype Votes", applicants_url(:sort => "skype") %></th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
   </tr>
 
@@ -24,6 +27,7 @@
 		<td class="col-score"><%= evaluation.score if evaluation %></td>
 		<td class="col-average"><%= applicant.average_score %></td>
 		<td class="col-stddev"><%= applicant.average_score_precision %></td>
+		<td class="col-skype"><%= applicant.skype_vote_total %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
     <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
   </tr>

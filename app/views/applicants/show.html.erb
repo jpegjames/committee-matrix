@@ -171,5 +171,13 @@
 	<% end %>
 <% end %>
 
+<h2>Recommended for Skype interviews by</h2>
+<%= "No records found" if @applicant.skype_vote_total == nil or @applicant.skype_vote_total == 0 %>
+<% @responses.each do |response| %>
+	<% if response.skype_vote == true %>
+		<%= response.member.name %><br>
+	<% end %>
+<% end %>
+
 
 <p><%= link_to 'Back', applicants_path %></p>

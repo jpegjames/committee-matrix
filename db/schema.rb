@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105001004) do
+ActiveRecord::Schema.define(:version => 20130107154745) do
 
   create_table "applicants", :force => true do |t|
     t.string   "fname"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130105001004) do
     t.decimal  "average_score",           :precision => 6, :scale => 5
     t.decimal  "average_score_sort",      :precision => 3, :scale => 2
     t.decimal  "average_score_precision", :precision => 4, :scale => 3
+    t.integer  "skype_vote_total"
   end
 
   create_table "member_responses", :force => true do |t|
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130105001004) do
     t.integer  "member_id"
     t.text     "general_comments"
     t.decimal  "score",            :precision => 5, :scale => 4
+    t.boolean  "skype_vote"
   end
 
   create_table "members", :force => true do |t|

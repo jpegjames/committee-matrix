@@ -13,8 +13,11 @@ class ApplicantsController < ApplicationController
       sort = "average_score DESC"
       @sort_text = "The applicants sorted by the average evaluation scores."
     when "deviation"
-      sort = "average_score_precision DESC"
+      sort = "average_score_precision ASC"
       @sort_text = "The applicants sorted by how closely each member's evaluations align. The closer to zero, the better."
+    when "skype"
+      sort = "skype_vote_total DESC"
+      @sort_text = "The applicants sorted by the number of recommendations to be included in the Skype interviews."
     else
       sort = "lname ASC"
       @sort_text = "The applicants are sorted by their last name."

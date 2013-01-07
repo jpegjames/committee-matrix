@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
   
   def login_required
-    if session[:member_login_time] and session[:member_login_time] < 30.minute.ago
+    if session[:member_login_time] and session[:member_login_time] < 2.hours.ago
       # force logout
       session[:member_id] = nil
       session[:member_login_time] = nil

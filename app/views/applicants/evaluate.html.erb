@@ -209,6 +209,8 @@
 		<%= f.text_area :general_comments, :rows => 6, :cols => 80 %>
 	</div>
 	
+	<p>Do you recommend <%= @applicant.name %> to be on the Skype interview list? <%= f.check_box :skype_vote %> Yes</p>
+	
 	<p><%= f.submit "Save Evaluation" %> <%= link_to "Back", applicants_url %></p>
 <% end %>
 

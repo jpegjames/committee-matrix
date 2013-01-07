@@ -101,9 +101,15 @@ th, td {
 	padding-left: 25px;
 }
 .col-stddev {
-	border-right: 1px dotted #888;
+/*	border-right: 1px dotted #888;*/
 	padding-right: 25px;
 }
+.col-skype {
+	border-right: 1px dotted #888;
+	padding-right: 25px;
+	text-align: center;
+}
+
 .col-comments {
 	text-align: left;
 	min-width: 200px;
