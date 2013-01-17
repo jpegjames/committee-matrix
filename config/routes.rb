@@ -5,6 +5,8 @@ SearchCommitteeMatrix::Application.routes.draw do
   get 'applicants/:id/evaluate' => 'applicants#evaluate', :as => :evaluate
   post 'applicants/:id/evaluate/save' => 'applicants#save_evaluation', :as => :save_evaluation
   put 'applicants/:id/evaluate/save' => 'applicants#save_evaluation', :as => :save_evaluation
+  match 'applicants/:id/add_to_skype_list/:value' => 'applicants#update_skype_list'
+  get 'skype_list' => 'applicants#index_skype', :as => :skype_list
   
   match 'login' => 'sessions#new', :as => :login
   post 'sessions/create'

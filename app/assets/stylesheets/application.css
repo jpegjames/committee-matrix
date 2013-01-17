@@ -109,6 +109,10 @@ th, td {
 	padding-right: 25px;
 	text-align: center;
 }
+.col-skype-add {
+	border-left: 1px dotted #888;
+	text-align: center;
+}
 
 .col-comments {
 	text-align: left;

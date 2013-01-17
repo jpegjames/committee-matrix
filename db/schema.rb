@@ -10,18 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107154745) do
+ActiveRecord::Schema.define(:version => 20130117190941) do
 
   create_table "applicants", :force => true do |t|
     t.string   "fname"
     t.string   "lname"
     t.date     "date_applied"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.decimal  "average_score",           :precision => 6, :scale => 5
     t.decimal  "average_score_sort",      :precision => 3, :scale => 2
     t.decimal  "average_score_precision", :precision => 4, :scale => 3
     t.integer  "skype_vote_total"
+    t.integer  "skype_list",                                            :default => 2
   end
 
   create_table "member_responses", :force => true do |t|

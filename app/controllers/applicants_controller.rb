@@ -2,7 +2,12 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   # GET /applicants.json
   def index
-    case params[:sort]
+    sort_param = params[:sort]
+    sort_param ||= session[:sort]
+    
+    session[:sort] = params[:sort] if params[:sort] != nil
+    
+    case sort_param
     when "fname"
       sort = "fname ASC"
       @sort_text = "The applicants are sorted by their first name."
@@ -18,6 +23,9 @@ class ApplicantsController < ApplicationController
     when "skype"
       sort = "skype_vote_total DESC, average_score DESC"
       @sort_text = "The applicants sorted by the number of recommendations to be included in the Skype interviews."
+    when "skypelist"
+      sort = "skype_list DESC, skype_vote_total DESC, average_score DESC"
+      @sort_text = "The applicants sorted by if they are on the skype short list or not."
     else
       sort = "lname ASC"
       @sort_text = "The applicants are sorted by their last name."
@@ -28,6 +36,10 @@ class ApplicantsController < ApplicationController
       format.html # index.html.erb
       format.json { render :json => @applicants }
     end
+  end
+
+  def index_skype
+    @applicants = Applicant.all(:conditions => { :skype_list => "3" }, :order => "average_score DESC")
   end
 
   # GET /applicants/1
@@ -97,6 +109,36 @@ class ApplicantsController < ApplicationController
     respond_to do |format|
       if @applicant.update_attributes(params[:applicant])
         format.html { redirect_to @applicant, :notice => 'Applicant was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @applicant.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def update_skype_list
+    ## For easy sorting, skype_list values:
+    # 3 => added to skype list
+    # 2 => undecided
+    # 1 => not added to skype list
+    
+    @applicant = Applicant.find(params[:id])
+    
+    case params[:value]
+    when "true"
+      @applicant.skype_list = 3
+    when "false"
+      @applicant.skype_list = 1
+    else
+      @applicant.skype_list = 2
+    end
+    
+    
+    
+    respond_to do |format|
+      if @applicant.save
+        format.html { redirect_to applicants_url, :notice => 'The Skype list was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

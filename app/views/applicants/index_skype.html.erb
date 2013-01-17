@@ -1,0 +1,25 @@
+<h1>Skype Short List (<%= @applicants.size %>)</h1>
+
+<style type="text/css" media="screen">
+	.applicants {
+		font-size: 150%;
+		color: #999;
+		line-height: 30px;
+	}
+	.applicants a {
+		color: black !important;
+		text-decoration: none;
+	}
+	.applicants a:hover {
+		background: none !important;
+		text-decoration: underline;
+	}
+</style>
+
+<ol class="applicants">
+	<% @applicants.each do |applicant| %>
+		<li><%= link_to applicant.name, applicant_url(applicant) %> &rarr;</li>
+	<% end %>
+</ol>
+
+<p><%= link_to 'Back', applicants_path %></p>

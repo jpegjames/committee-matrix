@@ -15,11 +15,34 @@
     <th class="col-stddev"><%= link_to "Standard Deviation", applicants_url(:sort => "deviation") %></th>
     <th class="col-skype"><%= link_to "Skype Votes", applicants_url(:sort => "skype") %></th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
+		<% if @current_member.id == 1 %>
+	    <th class="col-skype-add"><%= link_to "Add to Skype List", applicants_url(:sort => "skypelist") %></th>
+		<% end %>
   </tr>
+
+<% if @current_member.id == 1 %>
+	<style type="text/css" media="screen">
+		.skype-yes, .skype-yes td {
+			background: rgb(50, 152, 50) !important;
+		}
+		.skype-yes .col-evaluated span, .skype-no .col-evaluated span {
+			display: none;
+		}
+		.skype-yes * {
+			color: white !important;
+		}
+		.skype-no, .skype-no td {
+			background: rgb(255, 70, 70) !important;
+		}
+		.skype-no * {
+			color: white !important;
+		}
+	</style>
+<% end %>
 
 <% @applicants.each do |applicant| %>
 	<% evaluation = applicant.member_responses.find_by_member_id(@current_member.id) %>
-  <tr class="<%= 'evaluated' if evaluation %>">
+  <tr class="<%= 'evaluated' if evaluation %> <%= 'skype-yes' if applicant.on_skype_list? == true %>  <%= 'skype-no' if applicant.on_skype_list? == false %>">
     <td class="col-evaluated"><%= evaluation ? "<span class='evaluated-yes'>Evaluated</span>".html_safe : "<span class='evaluated-no'>Needs Evaluation</span>".html_safe %></td>
     <td class="col-lname"><%= applicant.lname %>,</td>
     <td class="col-fname"><%= applicant.fname %></td>
@@ -30,6 +53,9 @@
 		<td class="col-skype"><%= applicant.skype_vote_total %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
     <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
+		<% if @current_member.id == 1 %>
+	  	<td class="col-skype-add"><%= link_to "Yes", :action => 'update_skype_list', :value => 'true', :id => applicant.id %> | <%= link_to "No", :action => 'update_skype_list', :value => 'false', :id => applicant.id %> | <%= link_to "Clear", :action => 'update_skype_list', :value => 'clear', :id => applicant.id %></td>
+		<% end %>
   </tr>
 <% end %>
 </table>
@@ -41,4 +67,6 @@
 
 <br />
 
-<%= link_to 'New Applicant', new_applicant_path if @current_member.id == 1  %>
+<% if @current_member.id == 1 %>
+	<%= link_to 'New Applicant', new_applicant_path %> | <%= link_to "Skype List", skype_list_url() %>
+<% end %>

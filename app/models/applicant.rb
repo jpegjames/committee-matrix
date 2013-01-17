@@ -10,4 +10,13 @@ class Applicant < ActiveRecord::Base
   def name
     self.fname + " " + self.lname
   end
+  def on_skype_list?
+    if self.skype_list == 3
+      return true
+    elsif self.skype_list == 1
+      return false
+    else
+      return nil
+    end
+  end
 end
