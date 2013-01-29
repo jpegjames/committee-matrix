@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129153845) do
+ActiveRecord::Schema.define(:version => 20130129173328) do
 
   create_table "applicant_files", :force => true do |t|
     t.integer  "applicant_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130129153845) do
     t.decimal  "average_score_precision", :precision => 4, :scale => 3
     t.integer  "skype_vote_total"
     t.integer  "skype_list",                                            :default => 2
-    t.integer  "skype_order"
+    t.datetime "skype_date"
   end
 
   create_table "member_responses", :force => true do |t|

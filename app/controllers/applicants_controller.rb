@@ -39,7 +39,7 @@ class ApplicantsController < ApplicationController
   end
 
   def index_skype
-    @applicants = Applicant.all(:conditions => { :skype_list => "3" }, :order => "skype_order ASC")
+    @applicants = Applicant.all(:conditions => { :skype_list => "3" }, :order => "skype_date ASC")
   end
 
   # GET /applicants/1
