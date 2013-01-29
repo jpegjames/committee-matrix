@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117190941) do
+ActiveRecord::Schema.define(:version => 20130129020939) do
+
+  create_table "applicant_files", :force => true do |t|
+    t.integer  "applicant_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  add_index "applicant_files", ["applicant_id"], :name => "index_applicant_files_on_applicant_id"
 
   create_table "applicants", :force => true do |t|
     t.string   "fname"
@@ -53,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130117190941) do
     t.text     "general_comments"
     t.decimal  "score",            :precision => 5, :scale => 4
     t.boolean  "skype_vote"
+    t.text     "skype_comments"
   end
 
   create_table "members", :force => true do |t|

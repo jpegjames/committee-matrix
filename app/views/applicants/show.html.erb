@@ -6,6 +6,24 @@
 	}
 </style>
 
+
+<h2><%= @applicant %> Files (<%= @applicant.files.size %>)</h2>
+<ul>
+	<% @applicant.files.each do |file| %>
+		<li><%= link_to file.attachment_file_name, file.attachment.url() %></li>
+	<% end %>		
+</ul>
+
+<h2>Skype Comments</h2>
+<% @responses.each do |response| %>
+	<% if response.skype_comments != nil and response.skype_comments != "" %>
+		<p><b><%= response.member.name %>:</b> <%= response.skype_comments %></p>
+	<% end %>
+<% end %>
+
+
+<h2>Initial Evaluation</h2>
+
 <table border="0" cellspacing="1" cellpadding="0" class="responses">
 	<tr>
 		<th class="col-questions"></th>

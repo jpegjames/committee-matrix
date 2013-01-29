@@ -2,7 +2,7 @@ class MemberResponse < ActiveRecord::Base
   belongs_to :applicant
   belongs_to :member
   
-  attr_accessible :q1a, :q1c, :q2a, :q2c, :q3a, :q3c, :q4a, :q4c, :q5a, :q5c, :q6a, :q6c, :q7a, :q7c, :q8a, :q8c, :q9a, :q9c, :q10a, :q10c, :general_comments, :skype_vote
+  attr_accessible :q1a, :q1c, :q2a, :q2c, :q3a, :q3c, :q4a, :q4c, :q5a, :q5c, :q6a, :q6c, :q7a, :q7c, :q8a, :q8c, :q9a, :q9c, :q10a, :q10c, :general_comments, :skype_vote, :skype_comments
   
   before_save :calculate_score
   after_save :calculate_average_score
