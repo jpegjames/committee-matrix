@@ -1,8 +1,11 @@
-<h1>Review Photo Applicants</h1>
-
-<p class="sort-detials"><%= @sort_text %></p>
-
-<p>You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p>
+<% if controller.action_name == "index" %>
+	<h1>Review Photo Applicants</h1>
+	<p class="sort-detials"><%= @sort_text %></p>
+	<p>You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p>
+<% else %>
+	<h1>Skype Short List (<%= @applicants.size %>)</h1>
+	<p class="sort-detials">Sorted by Skype interview schedule </p>
+<% end %>
 
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>

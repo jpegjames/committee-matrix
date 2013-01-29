@@ -24,6 +24,10 @@
     <%= f.date_select :date_applied %>
   </div>
 	<div class="field">
+    <%= f.label :skype_order %><br />
+    <%= f.text_field :skype_order %>
+  </div>
+	<div class="field">
 		<%= f.fields_for :applicant_files do |d| %>
     	<%= d.label :attachment, "Documents" %><br />
 			<%= d.file_field :attachment %><br />

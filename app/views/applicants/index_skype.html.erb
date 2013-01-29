@@ -1,25 +1,22 @@
 <h1>Skype Short List (<%= @applicants.size %>)</h1>
+<p class="sort-detials">Sorted by Skype interview schedule</p>
 
-<style type="text/css" media="screen">
-	.applicants {
-		font-size: 150%;
-		color: #000099;
-		line-height: 30px;
-	}
-	.applicants a {
-		color: black !important;
-		text-decoration: none;
-	}
-	.applicants a:hover {
-		background: none !important;
-		text-decoration: underline;
-	}
-</style>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="col-lname">Name</th>
+    <th class="col-average">Average Score</th>
+    <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
+  </tr>
 
-<ol class="applicants">
-	<% @applicants.each do |applicant| %>
-		<li><%= applicant.name %> | <%= link_to "Show Details", applicant_url(applicant) %> | <%= link_to "Evaluate", evaluate_url(applicant) %></li>
-	<% end %>
-</ol>
+<% @applicants.each do |applicant| %>
+	<% evaluation = applicant.member_responses.find_by_member_id(@current_member.id) %>
+  <tr class="<%= 'evaluated' if evaluation %> <%= 'skype-yes' if applicant.on_skype_list? == true %>  <%= 'skype-no' if applicant.on_skype_list? == false %>">
+    <td class="col-lname"><%= applicant.name %></td>
+		<td class="col-average"><%= applicant.average_score %></td>
+		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
+    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
+  </tr>
+<% end %>
+</table>
 
-<p><%= link_to 'All Applicants', applicants_path %></p>
+<p><%= link_to 'Show All Applicants', applicants_path %></p>
