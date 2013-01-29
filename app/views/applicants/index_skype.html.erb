@@ -3,7 +3,7 @@
 <style type="text/css" media="screen">
 	.applicants {
 		font-size: 150%;
-		color: #999;
+		color: #000099;
 		line-height: 30px;
 	}
 	.applicants a {
@@ -18,8 +18,8 @@
 
 <ol class="applicants">
 	<% @applicants.each do |applicant| %>
-		<li><%= link_to applicant.name, applicant_url(applicant) %> &rarr;</li>
+		<li><%= applicant.name %> | <%= link_to "Show Details", applicant_url(applicant) %> | <%= link_to "Evaluate", evaluate_url(applicant) %></li>
 	<% end %>
 </ol>
 
-<p><%= link_to 'Back', applicants_path %></p>
+<p><%= link_to 'All Applicants', applicants_path %></p>
