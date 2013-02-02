@@ -7,6 +7,7 @@
 		<th class="col-date">Skype Interview</th>
     <th class="col-average">Average Score</th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
+		<th>Video Screencast</th>
   </tr>
 
 <% @applicants.each do |applicant| %>
@@ -17,6 +18,7 @@
 		<td class="col-average"><%= applicant.average_score %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
     <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
+		<td><%= link_to 'Watch Interview', skype_interview_recording_url(applicant.skype_interview_recording) if applicant.skype_interview_recording %></td>
   </tr>
 <% end %>
 </table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129173328) do
+ActiveRecord::Schema.define(:version => 20130202010314) do
 
   create_table "applicant_files", :force => true do |t|
     t.integer  "applicant_id"
@@ -76,5 +76,17 @@ ActiveRecord::Schema.define(:version => 20130129173328) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "skype_interview_recordings", :force => true do |t|
+    t.integer  "applicant_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+  end
+
+  add_index "skype_interview_recordings", ["applicant_id"], :name => "index_skype_interview_recordings_on_applicant_id"
 
 end

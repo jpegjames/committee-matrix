@@ -1,0 +1,23 @@
+<h1>Listing skype_interview_recordings</h1>
+
+<table>
+  <tr>
+    <th>Applicant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @skype_interview_recordings.each do |skype_interview_recording| %>
+  <tr>
+    <td><%= skype_interview_recording.applicant %></td>
+    <td><%= link_to 'Show', skype_interview_recording %></td>
+    <td><%= link_to 'Edit', edit_skype_interview_recording_path(skype_interview_recording) %></td>
+    <td><%= link_to 'Destroy', skype_interview_recording, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Skype interview recording', new_skype_interview_recording_path %>

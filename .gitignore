@@ -15,4 +15,8 @@
 /tmp
 
 # Ignore public/system
-/system/public/*
+/public/system/*
+
+
+# .DS_Store
+.DS_Store

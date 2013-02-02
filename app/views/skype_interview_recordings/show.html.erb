@@ -1,0 +1,18 @@
+<h1>Skype interview for <%= @skype_interview_recording.applicant %></h1>
+
+<div id="videoplayer">Loading the player...</div>
+
+<script type="text/javascript" src="/assets/jwplayer/jwplayer.js" ></script>
+<script type="text/javascript">
+    jwplayer("videoplayer").setup({
+        file: "<%= @skype_interview_recording.video %>",
+        image: "/uploads/example.jpg",
+    });
+</script>
+<style type="text/css" media="screen">
+	#videoplayer {
+		margin: 20px 0;
+	}
+</style>
+
+<%= link_to 'Back', skype_list_url() %>

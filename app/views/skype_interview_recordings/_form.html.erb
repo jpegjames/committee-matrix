@@ -1,0 +1,25 @@
+<%= form_for @skype_interview_recording, :html =>{ :multipart => true } do |f| %>
+  <% if @skype_interview_recording.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skype_interview_recording.errors.count, "error") %> prohibited this skype_interview_recording from being saved:</h2>
+
+      <ul>
+      <% @skype_interview_recording.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :applicant_id, "Applicant" %><br />
+		<%= select("skype_interview_recording", "applicant_id", @applicants.collect {|p| [ p.name, p.id ] }, { :include_blank => "Choose One" }) %>
+  </div>
+	<div class="field">
+    <%= f.label :video %><br />
+    <%= f.file_field :video %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

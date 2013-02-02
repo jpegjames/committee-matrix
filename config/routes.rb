@@ -1,4 +1,6 @@
 SearchCommitteeMatrix::Application.routes.draw do
+  resources :skype_interview_recordings
+
   resources :members
 
   resources :applicants
