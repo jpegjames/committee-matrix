@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'paperclip', "~> 2.4"
 
 gem 'sqlite3'
+gem 'mysql2', "~> 0.2.7"
 
 gem 'json'
 
