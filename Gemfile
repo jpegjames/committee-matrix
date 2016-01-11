@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'paperclip', "~> 2.4"
 
-gem 'sqlite3'
+gem 'mysql2'
 
 gem 'json'
 
@@ -21,6 +21,21 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet', '>= 4.14.4'
+  gem 'guard', '>= 2.2.2',       :require => false
+  gem 'guard-livereload',        :require => false
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'rack-livereload'
+  gem 'rb-fsevent',              :require => false
+  gem 'rubocop'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'
