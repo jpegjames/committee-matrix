@@ -24,17 +24,6 @@ group :assets do
 end
 
 group :development do
-  gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet', '>= 4.14.4'
-  gem 'guard', '>= 2.2.2',       :require => false
-  gem 'guard-livereload',        :require => false
-  gem 'pry-rails'
-  gem 'pry-remote'
-  gem 'rack-livereload'
-  gem 'rb-fsevent',              :require => false
-  gem 'rubocop'
   gem 'sqlite3'
 end
 
