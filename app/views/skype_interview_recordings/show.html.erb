@@ -2,11 +2,12 @@
 
 <div id="videoplayer">Loading the player...</div>
 
+<p><%= link_to "Direct link to QuickTime video (use this link if the video above does not play)", @skype_interview_recording.video.url %></p>
+
 <script type="text/javascript" src="/assets/jwplayer/jwplayer.js" ></script>
 <script type="text/javascript">
     jwplayer("videoplayer").setup({
         file: "<%= @skype_interview_recording.video %>",
-        image: "/uploads/example.jpg",
     });
 </script>
 <style type="text/css" media="screen">
