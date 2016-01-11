@@ -3,12 +3,16 @@ SearchCommitteeMatrix::Application.routes.draw do
 
   resources :members
 
+  get 'positions/:position_id/applicants/skype' => 'applicants#index_skype', :as => :skype_list
+  resources :positions do 
+    resources :applicants
+  end
   resources :applicants
   get 'applicants/:id/evaluate' => 'applicants#evaluate', :as => :evaluate
   post 'applicants/:id/evaluate/save' => 'applicants#save_evaluation', :as => :save_evaluation
   put 'applicants/:id/evaluate/save' => 'applicants#save_evaluation', :as => :save_evaluation
   match 'applicants/:id/add_to_skype_list/:value' => 'applicants#update_skype_list'
-  get 'skype_list' => 'applicants#index_skype', :as => :skype_list
+  
   
   match 'login' => 'sessions#new', :as => :login
   post 'sessions/create'
@@ -63,7 +67,7 @@ SearchCommitteeMatrix::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'applicants#index_skype'
+  root :to => 'applicants#index'
 
   # See how all your routes lay out with "rake routes"
 
