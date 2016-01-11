@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202010314) do
+ActiveRecord::Schema.define(:version => 20160111110451) do
 
   create_table "applicant_files", :force => true do |t|
     t.integer  "applicant_id"
@@ -36,7 +37,10 @@ ActiveRecord::Schema.define(:version => 20130202010314) do
     t.integer  "skype_vote_total"
     t.integer  "skype_list",                                            :default => 2
     t.datetime "skype_date"
+    t.integer  "position_id"
   end
+
+  add_index "applicants", ["position_id"], :name => "index_applicants_on_position_id"
 
   create_table "member_responses", :force => true do |t|
     t.integer  "q1a"
@@ -75,6 +79,12 @@ ActiveRecord::Schema.define(:version => 20130202010314) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "positions", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "skype_interview_recordings", :force => true do |t|

@@ -5,8 +5,10 @@ class Applicant < ActiveRecord::Base
   has_many :applicant_files
   has_one :skype_interview_recording
   
-  attr_accessible :date_applied, :fname, :lname, :applicant_files_attributes, :skype_date
+  attr_accessible :date_applied, :fname, :lname, :applicant_files_attributes, :skype_date, :position_id
   accepts_nested_attributes_for :applicant_files
+
+  validates_presence_of :fname, :lname, :position_id
   
   def to_s
     self.name

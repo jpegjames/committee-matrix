@@ -12,6 +12,14 @@
  *= require_tree .
  */
 
+a {
+	color: #1e75af;
+}
+a:hover {
+	color: #114161;
+	text-decoration: none;
+}
+
 .account {
 	position: absolute;
 	top: 0;
@@ -36,11 +44,29 @@ h2 {
 	border-bottom: 1px solid #888;
 	width: 470px;
 }
-p.sort-detials {
+p.position-details {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	border-left: #ccc solid 5px;
+	padding-left: 5px;
+	width: 200px;
+	float: left;
+}
+p.position-details a {
+	/*color: #000;*/
+	text-decoration: none;
+}
+p.position-details a:hover {
+	color: #1e75af;
+	/*border-bottom-style: solid;*/
+	text-decoration: underline;
+}
+p.sort-details {
 	margin-top: 0px;
 	margin-bottom: 30px;
 	border-left: #1e75af solid 5px;
 	padding-left: 5px;
+	float: left;
 }
 p.evaluation-complete {
 	margin-top: 0px;
@@ -58,6 +84,12 @@ p.evaluation-incomplete {
 	background: #fcf3e0;
 	display: inline-block;
 }
+p.clear.evaluation-incomplete {
+	display: block;
+}
+table {
+	margin-top: 5em;
+}
 th {
 	vertical-align: bottom;
 }
@@ -66,7 +98,7 @@ th a, th a:visited {
 	text-decoration: none;
 }
 th a:hover {
-	color: #fff;
+	color: #045bcc;
 }
 th, td {
 	padding: 3px 10px;
@@ -151,6 +183,22 @@ input[type="radio"] {
 	margin-top: 30px;
 }
 
+.legend {
+	margin-top: 0px;
+	margin-bottom: 30px;
+	border-left: #ccc solid 5px;
+	padding: 10px 10px 10px 5px;
+	display: inline-block;
+	background: #eee;
+	margin-top: 3em;
+}
+.legend p {
+	margin: 0;
+}
+
+.clear {
+	clear: both;
+}
 
 .selected-value {
 	font-weight: bold;

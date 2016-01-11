@@ -1,13 +1,15 @@
 <% if controller.action_name == "index" %>
-	<h1>Review Photo Applicants</h1>
-	<p class="sort-detials"><%= @sort_text %></p>
-	<p>You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p>
+	<h1>Review <%= @position %> Applicants</h1>
+  <p class="position-details"><%= link_to 'View Other Posting', positions_path() %></p>
+	<p class="sort-details"><%= @sort_text %></p>
+	<!-- <p class="clear evaluation-incomplete">You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p> -->
 <% else %>
-	<h1>Skype Short List (<%= @applicants.size %>)</h1>
-	<p class="sort-detials">Sorted by Skype interview schedule </p>
+	<h1><%= @position %> Skype Short List (<%= @applicants.size %>)</h1>
+  <p class="position-details"><%= link_to 'View Other Posting', positions_path() %></p>
+	<p class="sort-details">Sorted by Skype interview schedule </p>
 <% end %>
 
-<table border="0" cellspacing="0" cellpadding="0">
+<table class="clear" border="0" cellspacing="0" cellpadding="0">
   <tr>
 	  <th class="col-evaluated"></th>
     <th class="col-lname"><%= link_to "Last Name", applicants_url(:sort => "lname") %>,</th>
@@ -63,13 +65,12 @@
 <% end %>
 </table>
 <p><%= @applicants.size %> applicants listed</p>
-<p><%= image_tag "checkmark.png" %> = You have evaluated this applicant</p>
-<p><%= image_tag "checkbox.png" %> = You have not evaluated this applicant</p>
-
+<div class="legend">
+  <p><%= image_tag "checkmark.png" %> = You have evaluated this applicant</p>
+  <p><%= image_tag "checkbox.png" %> = You have not evaluated this applicant</p>
+</div>
 
 
 <br />
 
-<% if @current_member.id == 1 %>
-	<%= link_to 'New Applicant', new_applicant_path %> | <%= link_to "Skype List", skype_list_url() %>
-<% end %>
+<%= link_to 'New Applicant', new_applicant_path %> | <%= link_to "Skype List", skype_list_url() %>

@@ -2,6 +2,8 @@ class ApplicantsController < ApplicationController
   # GET /applicants
   # GET /applicants.json
   def index
+    set_position
+
     sort_param = params[:sort]
     sort_param ||= session[:sort]
     
@@ -30,16 +32,27 @@ class ApplicantsController < ApplicationController
       sort = "lname ASC"
       @sort_text = "The applicants are sorted by their last name."
     end
-    @applicants = Applicant.all(:order => sort)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @applicants }
+    if @position.nil?
+      redirect_to(positions_path)
+    else
+      @applicants = Applicant.where(position_id: @position.id).order(order: sort)
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render :json => @applicants }
+      end
     end
   end
 
   def index_skype
-    @applicants = Applicant.all(:conditions => { :skype_list => "3" }, :order => "skype_date ASC")
+    set_position
+
+    if @position.nil?
+      redirect_to(positions_path)
+    else
+      @applicants = Applicant.all(:conditions => { skype_list: '3', position_id: @position.id }, :order => "skype_date ASC")
+    end
   end
 
   # GET /applicants/1
@@ -159,4 +172,9 @@ class ApplicantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def set_position
+      @position = Position.find_by_id(params[:position_id]) if params[:position_id]
+    end
 end

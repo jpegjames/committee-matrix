@@ -20,12 +20,19 @@
     <%= f.text_field :lname %>
   </div>
   <div class="field">
+    <%= f.label :position_id %><br />
+    <%= f.select :position_id, Position.all.collect{ |p| [p.title, p.id] }, { include_blank: true } %>
+  </div>
+
+
+  <br>
+  <div class="field">
     <%= f.label :date_applied %><br />
     <%= f.date_select :date_applied %>
   </div>
 	<div class="field">
-    <%= f.label :skype_date %><br />
-    <%= f.datetime_select :skype_date %>
+    <%= f.label :skype_date, 'Skype Date/Time (if applicable)' %><br />
+    <%= f.datetime_select :skype_date, {include_blank: true} %>
   </div>
 	<div class="field">
 		<%= f.fields_for :applicant_files do |d| %>
@@ -33,6 +40,8 @@
 			<%= d.file_field :attachment %><br />
 		<% end %>
 	</div>
+
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
