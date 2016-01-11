@@ -36,7 +36,22 @@ h2 {
 	border-bottom: 1px solid #888;
 	width: 470px;
 }
-p.sort-detials {
+p.position-details {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	border-left: #ccc solid 5px;
+	padding-left: 5px;
+}
+p.position-details a {
+	color: #000;
+	text-decoration: none;
+	border-bottom: 1px dashed;
+}
+p.position-details a:hover {
+	color: #1e75af;
+	border-bottom-style: solid;
+}
+p.sort-details {
 	margin-top: 0px;
 	margin-bottom: 30px;
 	border-left: #1e75af solid 5px;
@@ -66,7 +81,7 @@ th a, th a:visited {
 	text-decoration: none;
 }
 th a:hover {
-	color: #fff;
+	color: #045bcc;
 }
 th, td {
 	padding: 3px 10px;

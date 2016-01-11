@@ -1,5 +1,6 @@
-<h1>Skype Short List (<%= @applicants.size %>)</h1>
-<p class="sort-detials">Sorted by Skype interview schedule</p>
+<h1><%= @position %> Skype Short List (<%= @applicants.size %>)</h1>
+<p class="position-details"><%= link_to 'View Other Posting', positions_path() %></p>
+<p class="sort-details">Sorted by Skype interview schedule</p>
 
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -23,4 +24,4 @@
 <% end %>
 </table>
 
-<p><%= link_to 'Show All Applicants', applicants_path %></p>
+<p><%= link_to 'Show All Applicants', position_applicants_path(@position) %></p>
