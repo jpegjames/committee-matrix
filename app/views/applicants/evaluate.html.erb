@@ -218,11 +218,11 @@
 			<tr>
 				<td>
 					<strong>Teaching Experience</strong><br>
-					5) Strong record of teaching [Scuplture] &amp; Foundations<br>
-					4) Good record of teaching [Scuplture] &amp; Foundations<br>
-					3) Taught only [Scuplture]<br>
-					2) Taught only Foundations<br>
-					1) Taught only as a TA or none
+					5) Extensive record of teaching Sculpture, Ceramics &amp; 3D Foundations<br>
+					4) Significant record of teaching Sculpture, Ceramics &amp; 3D Foundations, but concentrated in more so in one area<br>
+					3) Limited teaching experience only in Sculpture or Ceramics<br>
+					2) Limited teaching experience only in 3D Foundations<br>
+					1) Teaching experience limited to Teaching Assistantship (or none at all)
 				</td>
 				<td class="selected-value-<%= @member_response.q1a %>">
 					<%= f.radio_button("q1a", "5") %> 5 
@@ -291,7 +291,7 @@
 				</td>
 				<td><%= f.text_area :q4c, :rows => 3 %></td>
 			</tr>
-			<tr>
+<!-- 			<tr>
 				<td>
 					<strong>Response to Mission/Vision/Values Statement</strong><br>
 					5) Passionate, insightful and relevant <br>
@@ -309,7 +309,7 @@
 					<%= f.radio_button("q5a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q5c, :rows => 3 %></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>
 					<strong>Cover Letter</strong><br>
@@ -386,6 +386,27 @@
 					<%= f.radio_button("q9a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q9c, :rows => 3 %></td>
+			</tr>
+
+			<tr>
+				<td>
+					<strong>Range of material and technical experience as demonstrated in personal/student work</strong><br>
+					5) Artwork demonstrates significant variety in technical expertise and material application<br>
+					4) Artwork demonstrates moderate variety in technical expertise and material application<br>
+					3) Artwork demonstrates little variety in terms of technical expertise and material application<br>
+					2) Artwork is uniform in terms of technical expertise and material application<br>
+					1) This criteria cannot be determined by the artwork portfolios
+
+				</td>
+				<td class="selected-value-<%= @member_response.q10a %>">
+					<%= f.radio_button("q10a", "5") %> 5 
+					<%= f.radio_button("q10a", "4") %> 4 
+					<%= f.radio_button("q10a", "3") %> 3 
+					<%= f.radio_button("q10a", "2") %> 2 
+					<%= f.radio_button("q10a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q10a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q10c, :rows => 3 %></td>
 			</tr>
 
 		<% elsif @applicant.position && @applicant.position.title.downcase.include?('photo') %>

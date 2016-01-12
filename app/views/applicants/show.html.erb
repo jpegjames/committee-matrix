@@ -92,21 +92,24 @@
 			<% end %>
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Response to Mission/Vision/Values' : 'Application Information' %></strong>
-		</td>
-		<% @responses.each do |response| %>
-			<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
-		<% end %>
-		<td>
+
+	<% unless @applicant.position.try(:title).try(:downcase).to_s.include?('sculpture') %>
+		<tr>
+			<td>
+				<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Response to Mission/Vision/Values' : 'Application Information' %></strong>
+			</td>
 			<% @responses.each do |response| %>
-				<% if response.q5c != "" %>
-					<b><%= response.member.name %>:</b> <%= response.q5c %><br>
-				<% end %>
+				<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
 			<% end %>
-		</td>
-	</tr>
+			<td>
+				<% @responses.each do |response| %>
+					<% if response.q5c != "" %>
+						<b><%= response.member.name %>:</b> <%= response.q5c %><br>
+					<% end %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
 	<tr>
 		<td>
 			<strong>Cover Letter</strong>
@@ -167,19 +170,24 @@
 			<% end %>
 		</td>
 	</tr>
-	<!-- <tr>
-		<td>Question 10</td>
-		<% @responses.each do |response| %>
-			<td class="selected-value selected-value-<%= response.q10a %>"><%= response.q10a if response.q10a != 0 %></td>
-		<% end %>
-		<td>
+
+	<% if @applicant.position.try(:title).try(:downcase).to_s.include?('sculpture') %>
+		<tr>
+			<td>
+				<strong>Range of material and technical experience as demonstrated in personal/student work</strong>
+			</td>
 			<% @responses.each do |response| %>
-				<% if response.q10c != "" %>
-					<b><%= response.member.name %>:</b> <%= response.q10c %><br>
-				<% end %>
+				<td class="selected-value selected-value-<%= response.q10a %>"><%= response.q10a if response.q10a != 0 %></td>
 			<% end %>
-		</td>
-	</tr> -->
+			<td>
+				<% @responses.each do |response| %>
+					<% if response.q10c != "" %>
+						<b><%= response.member.name %>:</b> <%= response.q10c %><br>
+					<% end %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
 </table>
 
 <h2>General Comments</h2>
