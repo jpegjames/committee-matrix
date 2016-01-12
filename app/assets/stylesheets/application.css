@@ -13,11 +13,10 @@
  */
 
 a {
-	color: #1e75af;
+	
 }
 a:hover {
-	color: #114161;
-	text-decoration: none;
+
 }
 
 .account {
@@ -60,6 +59,7 @@ p.position-details a:hover {
 	color: #1e75af;
 	/*border-bottom-style: solid;*/
 	text-decoration: underline;
+	background: none;
 }
 p.sort-details {
 	margin-top: 0px;
@@ -99,6 +99,7 @@ th a, th a:visited {
 }
 th a:hover {
 	color: #045bcc;
+	background: none;
 }
 th, td {
 	padding: 3px 10px;
