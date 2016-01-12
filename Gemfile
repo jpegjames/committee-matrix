@@ -11,6 +11,7 @@ gem 'aws-sdk'
 gem 'multipart-post'
 
 gem 'mysql2'
+gem 'activerecord-mysql2-adapter'
 
 gem "fastercsv"
 
