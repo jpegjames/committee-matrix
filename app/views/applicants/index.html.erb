@@ -12,16 +12,16 @@
 <table class="clear" border="0" cellspacing="0" cellpadding="0">
   <tr>
 	  <th class="col-evaluated"></th>
-    <th class="col-lname"><%= link_to "Last Name", applicants_url(:sort => "lname") %>,</th>
-    <th class="col-fname"><%= link_to "First Name", applicants_url(:sort => "fname") %></th>
-    <th class="col-date"><%= link_to "Date Applied", applicants_url(:sort => "date") %></th>
+    <th class="col-lname"><%= link_to "Last Name", position_applicants_url(position_id: params[:position_id], sort: "lname") %>,</th>
+    <th class="col-fname"><%= link_to "First Name", position_applicants_url(position_id: params[:position_id], sort: "fname") %></th>
+    <th class="col-date"><%= link_to "Date Applied", position_applicants_url(position_id: params[:position_id], sort: "date") %></th>
     <th class="col-score">Score</th>
-    <th class="col-average"><%= link_to "Average Score", applicants_url(:sort => "average") %></th>
-    <th class="col-stddev"><%= link_to "Standard Deviation", applicants_url(:sort => "deviation") %></th>
-    <th class="col-skype"><%= link_to "Skype Votes", applicants_url(:sort => "skype") %></th>
+    <th class="col-average"><%= link_to "Average Score", position_applicants_url(position_id: params[:position_id], sort: "average") %></th>
+    <th class="col-stddev"><%= link_to "Standard Deviation", position_applicants_url(position_id: params[:position_id], sort: "deviation") %></th>
+    <th class="col-skype"><%= link_to "Skype Votes", position_applicants_url(position_id: params[:position_id], sort: "skype") %></th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
 		<% if @current_member.id == 1 %>
-	    <th class="col-skype-add"><%= link_to "Add to Skype List", applicants_url(:sort => "skypelist") %></th>
+	    <th class="col-skype-add"><%= link_to "Add to Skype List", position_applicants_url(position_id: params[:position_id], sort: "skypelist") %></th>
 		<% end %>
   </tr>
 
