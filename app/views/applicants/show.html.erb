@@ -49,7 +49,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Darkroom Experience</strong>
+			<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Administrative Experience & Service Record' : 'Darkroom Experience' %></strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q2a %>"><%= response.q2a if response.q2a != 0 %></td>
@@ -64,7 +64,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Digital Experience</strong>
+			<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Exhibition/Publication Experience' : 'Digital Experience' %></strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q3a %>"><%= response.q3a if response.q3a != 0 %></td>
@@ -79,7 +79,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Teaching Statement</strong>
+			<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Desire to pursue Teaching as a Career' : 'Teaching Statement' %></strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q4a %>"><%= response.q4a if response.q4a != 0 %></td>
@@ -94,7 +94,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Application Information</strong>
+			<strong><%= @applicant.position && ['painting','sculpture'].include?(@applicant.position.title.downcase) ? 'Response to Mission/Vision/Values' : 'Application Information' %></strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
@@ -109,7 +109,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Cover Letter Articulation</strong>
+			<strong>Cover Letter</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q6a %>"><%= response.q6a if response.q6a != 0 %></td>
@@ -124,7 +124,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Personal Work</strong><br>(if applicable)
+			<strong>Personal Work</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q7a %>"><%= response.q7a if response.q7a != 0 %></td>
@@ -139,7 +139,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Student Work</strong><br>(if applicable)
+			<strong>Student Work</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q8a %>"><%= response.q8a if response.q8a != 0 %></td>
