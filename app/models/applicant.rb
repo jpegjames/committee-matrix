@@ -4,6 +4,7 @@ class Applicant < ActiveRecord::Base
   has_many :files, :class_name => 'ApplicantFile'
   has_many :applicant_files
   has_one :skype_interview_recording
+  belongs_to :position
   
   attr_accessible :date_applied, :fname, :lname, :applicant_files_attributes, :skype_date, :position_id
   accepts_nested_attributes_for :applicant_files
