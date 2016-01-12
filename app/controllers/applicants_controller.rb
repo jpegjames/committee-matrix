@@ -79,7 +79,7 @@ class ApplicantsController < ApplicationController
     @member_response = @applicant.member_responses.find_or_initialize_by_member_id(@current_member.id)
     @member_response.update_attributes(params[:member_response])
     
-    redirect_to applicants_url, :notice => "Evaluation for #{@applicant} has been saved."
+    redirect_to position_applicants_url(@applicant.position), :notice => "Evaluation for #{@applicant} has been saved."
   end
 
   # GET /applicants/new
