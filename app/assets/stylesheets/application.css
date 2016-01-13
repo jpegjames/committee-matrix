@@ -87,6 +87,20 @@ p.evaluation-incomplete {
 p.clear.evaluation-incomplete {
 	display: block;
 }
+
+.skype-recommendation-question {
+	margin-top: 0px;
+	margin-bottom: 30px;
+	border-left: #ccc solid 5px;
+	padding: 10px 60px 10px 10px;
+	background: #f2f2f2;
+	display: inline-block;
+}
+.recommended {
+	border-color: #1e75af;
+	background: #dcf3ff;
+}
+
 table {
 	margin-top: 5em;
 }

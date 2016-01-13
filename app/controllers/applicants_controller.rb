@@ -36,7 +36,7 @@ class ApplicantsController < ApplicationController
     if @position.nil?
       redirect_to(positions_path)
     else
-      @applicants = Applicant.where(position_id: @position.id).order(order: sort)
+      @applicants = Applicant.where(position_id: @position.id).reorder(sort)
 
       respond_to do |format|
         format.html # index.html.erb

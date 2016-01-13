@@ -594,9 +594,9 @@
 		<%= f.text_area :general_comments, :rows => 6, :cols => 80 %>
 	</div>
 	
-	<p>Do you recommend <%= @applicant.name %> to be on the Skype interview list? <%= f.check_box :skype_vote %> Yes</p>
+	<p class="skype-recommendation-question <%= 'recommended' if @member_response.skype_vote == true %>">Do you recommend <%= @applicant.name %> to be on the Skype interview list? <%= f.check_box :skype_vote %> Yes</p>
 	
-	<p><%= f.submit "Save Evaluation" %> <%= link_to "Back", applicants_url %></p>
+	<p><%= f.submit "Save Evaluation" %> <%= link_to "Back", position_applicants_url(@applicant.position) %></p>
 <% end %>
 
 
@@ -604,5 +604,13 @@
 	$("input:radio").click(function() {
 		var value = $(this).val();
 		$(this).parent().removeClass().addClass("selected-value-" + value);
+	});
+
+	$("#member_response_skype_vote").click(function() {
+		if ($(this).prop('checked') == true) {
+			$(this).parent().addClass('recommended');
+		} else {
+			$(this).parent().removeClass('recommended');
+		}
 	});
 </script>
