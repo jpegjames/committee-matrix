@@ -152,7 +152,7 @@ class ApplicantsController < ApplicationController
     
     respond_to do |format|
       if @applicant.save
-        format.html { redirect_to applicants_url, :notice => 'The Skype list was successfully updated.' }
+        format.html { redirect_to position_applicants_url(@applicant.position), :notice => 'The Skype list was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
