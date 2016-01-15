@@ -179,6 +179,7 @@ td {
 }
 .responses td { 
 	border: none;
+	transition: .75s background;
 }
 img {
 	vertical-align:-28%;
