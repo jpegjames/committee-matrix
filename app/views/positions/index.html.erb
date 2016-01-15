@@ -11,7 +11,8 @@
 <% @positions.each do |position| %>
   <tr>
     <td><%= position.title %></td>
-    <td><%= link_to 'Show Applicants', position_applicants_path(position) %></td>
+    <td><%= link_to 'Show All Applicants', position_applicants_path(position) %></td>
+    <td><%= link_to 'Show Skype List', skype_list_path(position) %></td>
     <td><%= link_to 'Edit', edit_position_path(position) %></td>
     <!-- <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>
