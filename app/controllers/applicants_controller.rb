@@ -49,7 +49,7 @@ class ApplicantsController < ApplicationController
     set_position
 
     if @position.nil?
-      redirect_to(positions_path)
+      @applicants = Applicant.all(:conditions => { skype_list: '3'}, :order => "skype_date ASC")
     else
       @applicants = Applicant.all(:conditions => { skype_list: '3', position_id: @position.id }, :order => "skype_date ASC")
     end

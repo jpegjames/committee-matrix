@@ -5,6 +5,9 @@
 <table class="clear" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <th class="col-lname">Name</th>
+    <% unless @position %>
+      <th class="col-position">Position</th>
+    <% end %>
 		<th class="col-date">Skype Interview</th>
     <th class="col-average">Average Score</th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
@@ -15,6 +18,9 @@
 	<% evaluation = applicant.member_responses.find_by_member_id(@current_member.id) %>
   <tr class="<%= 'evaluated' if evaluation %> <%= 'skype-yes' if applicant.on_skype_list? == true %>  <%= 'skype-no' if applicant.on_skype_list? == false %>">
     <td class="col-lname"><%= applicant.name %></td>
+    <% unless @position %>
+      <td class="col-position"><%= applicant.position %></td>
+    <% end %>
 		<td class="col-date"><%= applicant.skype_date.to_s(:pretty) if applicant.skype_date != nil %></td>
 		<td class="col-average"><%= applicant.average_score %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %> 
@@ -24,4 +30,10 @@
 <% end %>
 </table>
 
-<p><%= link_to 'Show All Applicants', position_applicants_path(@position) %></p>
+<p>
+  <% if @position %>
+    <%= link_to 'Show All Applicants', position_applicants_path(@position) %>
+  <% else %>
+    <%= link_to 'View All Positions', positions_path %>
+  <% end %>
+</p>

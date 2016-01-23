@@ -3,7 +3,8 @@ SearchCommitteeMatrix::Application.routes.draw do
 
   resources :members
 
-  get 'positions/:position_id/applicants/skype' => 'applicants#index_skype', :as => :skype_list
+  get 'positions/:position_id/applicants/skype' => 'applicants#index_skype', :as => :position_skype_list
+  get 'applicants/skype' => 'applicants#index_skype', :as => :skype_list
   resources :positions do 
     resources :applicants
   end

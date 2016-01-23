@@ -1,20 +1,24 @@
 <h1>Listing positions</h1>
 
-<table>
+<table style="margin-top: 3em;">
   <tr>
-    <th style="text-align: left;">Title</th>
-    <th></th>
-    <th></th>
-    <!-- <th></th> -->
+    <th style="text-align: left;" colspan="4">Title</th>
   </tr>
 
 <% @positions.each do |position| %>
   <tr>
     <td><%= position.title %></td>
     <td><%= link_to 'Show All Applicants', position_applicants_path(position) %></td>
-    <td><%= link_to 'Show Skype List', skype_list_path(position) %></td>
+    <td><%= link_to 'Show Skype List', position_skype_list_path(position) %></td>
     <td><%= link_to 'Edit', edit_position_path(position) %></td>
-    <!-- <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+  </tr>
+<% end %>
+<% if @positions.count > 1 %>
+  <tr>
+    <td>Combined</td>
+    <td></td>
+    <td><%= link_to 'Show Skype List', skype_list_path() %></td>
+    <td></td>
   </tr>
 <% end %>
 </table>
