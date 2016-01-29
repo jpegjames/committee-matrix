@@ -96,7 +96,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants/1/edit
   def edit
     @applicant = Applicant.find(params[:id])
-    @applicant_files = @applicant.applicant_files.build()
+    @applicant_files = 10.times do; @applicant.applicant_files.build(); end
   end
 
   # POST /applicants

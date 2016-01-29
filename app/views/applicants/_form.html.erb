@@ -36,7 +36,7 @@
   </div>
 	<div class="field">
 		<%= f.fields_for :applicant_files do |d| %>
-    	<%= d.label :attachment, "Documents" %><br />
+    	<%= d.label :attachment, "Document: #{'(' + d.object.attachment_file_name.to_s + ')' unless d.object.attachment_file_name.blank? }" %><br />
 			<%= d.file_field :attachment %><br />
 		<% end %>
 	</div>
