@@ -17,18 +17,6 @@ class Applicant < ActiveRecord::Base
   def name
     self.fname + " " + self.lname
   end
-  
-  # temp ---
-  def fname
-    return 'John'
-  end
-  
-  def lname
-    return 'Doe'
-  end
-  
-  # end temp ---
-  
   def on_skype_list?
     if self.skype_list == 3
       return true
