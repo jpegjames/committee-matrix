@@ -11,7 +11,7 @@
 <ul>
 	<% @applicant.files.each do |file| %>
 		<li><%= link_to file.attachment_file_name, file.attachment.url(), :target => "_blank" %> (<%= number_to_human_size(file.attachment_file_size) %>)</li>
-	<% end %>		
+	<% end %>
 </ul>
 
 <h2>Skype Comments</h2>
@@ -34,7 +34,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Teaching Experience</strong>
+			<strong>Teaching Experience (University/K-12)</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q1a %>"><%= response.q1a if response.q1a != 0 %></td>
@@ -49,7 +49,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong><%= @applicant.position && ['painting','3d / sculpture'].include?(@applicant.position.title.downcase) ? 'Administrative Experience & Service Record' : 'Darkroom Experience' %></strong>
+			<strong>Administrative Experience &amp; Service Record</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q2a %>"><%= response.q2a if response.q2a != 0 %></td>
@@ -64,7 +64,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong><%= @applicant.position && ['painting','3d / sculpture'].include?(@applicant.position.title.downcase) ? 'Exhibition/Publication Experience' : 'Digital Experience' %></strong>
+			<strong>Publication &amp; Professional Development Experience</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q3a %>"><%= response.q3a if response.q3a != 0 %></td>
@@ -79,7 +79,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong><%= @applicant.position && ['painting','3d / sculpture'].include?(@applicant.position.title.downcase) ? 'Desire to pursue Teaching as a Career' : 'Teaching Statement' %></strong>
+			<strong>Desire to pursue Teaching as a Career &amp; ability to structure Field Experiences</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q4a %>"><%= response.q4a if response.q4a != 0 %></td>
@@ -92,27 +92,24 @@
 			<% end %>
 		</td>
 	</tr>
-
-	<% unless @applicant.position.try(:title).try(:downcase).to_s.include?('3d / sculpture') %>
-		<tr>
-			<td>
-				<strong><%= @applicant.position && ['painting','3d / sculpture'].include?(@applicant.position.title.downcase) ? 'Response to Mission/Vision/Values' : 'Application Information' %></strong>
-			</td>
-			<% @responses.each do |response| %>
-				<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
-			<% end %>
-			<td>
-				<% @responses.each do |response| %>
-					<% if response.q5c != "" %>
-						<b><%= response.member.name %>:</b> <%= response.q5c %><br>
-					<% end %>
-				<% end %>
-			</td>
-		</tr>
-	<% end %>
 	<tr>
 		<td>
-			<strong>Cover Letter</strong>
+			<strong>Cover Letter &amp; Mission/Vision Statement</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q5a %>"><%= response.q5a if response.q5a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q5c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q5c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Ability to Complement Art Dept Faculty</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q6a %>"><%= response.q6a if response.q6a != 0 %></td>
@@ -127,7 +124,7 @@
 	</tr>
 	<tr>
 		<td>
-			<strong>Personal Work</strong>
+			<strong>Range of material and technical experience as demonstrated in research and creative activities</strong>
 		</td>
 		<% @responses.each do |response| %>
 			<td class="selected-value selected-value-<%= response.q7a %>"><%= response.q7a if response.q7a != 0 %></td>
@@ -140,54 +137,6 @@
 			<% end %>
 		</td>
 	</tr>
-	<tr>
-		<td>
-			<strong>Student Work</strong>
-		</td>
-		<% @responses.each do |response| %>
-			<td class="selected-value selected-value-<%= response.q8a %>"><%= response.q8a if response.q8a != 0 %></td>
-		<% end %>
-		<td>
-			<% @responses.each do |response| %>
-				<% if response.q8c != "" %>
-					<b><%= response.member.name %>:</b> <%= response.q8c %><br>
-				<% end %>
-			<% end %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<strong>Ability to Complement Dept</strong>
-		</td>
-		<% @responses.each do |response| %>
-			<td class="selected-value selected-value-<%= response.q9a %>"><%= response.q9a if response.q9a != 0 %></td>
-		<% end %>
-		<td>
-			<% @responses.each do |response| %>
-				<% if response.q9c != "" %>
-					<b><%= response.member.name %>:</b> <%= response.q9c %><br>
-				<% end %>
-			<% end %>
-		</td>
-	</tr>
-
-	<% if @applicant.position.try(:title).try(:downcase).to_s.include?('3d / sculpture') %>
-		<tr>
-			<td>
-				<strong>Range of material and technical experience as demonstrated in personal/student work</strong>
-			</td>
-			<% @responses.each do |response| %>
-				<td class="selected-value selected-value-<%= response.q10a %>"><%= response.q10a if response.q10a != 0 %></td>
-			<% end %>
-			<td>
-				<% @responses.each do |response| %>
-					<% if response.q10c != "" %>
-						<b><%= response.member.name %>:</b> <%= response.q10c %><br>
-					<% end %>
-				<% end %>
-			</td>
-		</tr>
-	<% end %>
 </table>
 
 <h2>General Comments</h2>
