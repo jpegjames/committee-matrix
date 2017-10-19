@@ -2,9 +2,9 @@
 	<h1>Review <%= @position %> Applicants</h1>
   <p class="position-details"><%= link_to 'View Other Posting', positions_path() %></p>
 	<p class="sort-details"><%= @sort_text %></p>
-	<!-- <p class="clear evaluation-incomplete">You have reviewed <%= @current_member.applicants.size %> out of <%= @applicants.size %> applicants.</p> -->
+	<!-- <p class="clear evaluation-incomplete">You have reviewed <%= @current_member.applicants.count %> out of <%= @applicants.count %> applicants.</p> -->
 <% else %>
-	<h1><%= @position %> Skype Short List (<%= @applicants.size %>)</h1>
+	<h1><%= @position %> Skype Short List (<%= @applicants.count %>)</h1>
   <p class="position-details"><%= link_to 'View Other Posting', positions_path() %></p>
 	<p class="sort-details">Sorted by Skype interview schedule </p>
 <% end %>
@@ -64,7 +64,7 @@
   </tr>
 <% end %>
 </table>
-<p><%= @applicants.size %> applicants listed</p>
+<p><%= @applicants.count %> applicants listed</p>
 <div class="legend">
   <p><%= image_tag "checkmark.png" %> = You have evaluated this applicant</p>
   <p><%= image_tag "checkbox.png" %> = You have not evaluated this applicant</p>

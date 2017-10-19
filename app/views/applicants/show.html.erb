@@ -7,7 +7,7 @@
 </style>
 
 
-<h2><%= @applicant %> Files (<%= @applicant.files.size %>)</h2>
+<h2><%= @applicant %> Files (<%= @applicant.files.count %>)</h2>
 <ul>
 	<% @applicant.files.each do |file| %>
 		<li><%= link_to file.attachment_file_name, file.attachment.url(), :target => "_blank" %> (<%= number_to_human_size(file.attachment_file_size) %>)</li>
