@@ -13,25 +13,25 @@
 <% end %>
 
 <%= form_for(@member_response, :url => save_evaluation_url) do |f| %>
-	
+
 	<h2><%= @applicant %> Files (<%= @applicant.files.size %>)</h2>
 	<ul>
 		<% @applicant.files.each do |file| %>
 			<li><%= link_to file.attachment_file_name, file.attachment.url(), :target => "_blank" %> (<%= number_to_human_size(file.attachment_file_size) %>)</li>
-		<% end %>		
+		<% end %>
 	</ul>
-	
+
 	<% unless @applicant.skype_date.nil? %>
 		<h2>Skype Comments</h2>
-		
+
 		<div class="field general_comments">
 			<%= f.label :skype_comments %> <br>
 			<%= f.text_area :skype_comments, :rows => 6, :cols => 80 %>
 		</div>
 	<% end %>
-	
+
 	<h2>Initial Evaluation</h2>
-	
+
 	<table border="0" cellspacing="5" cellpadding="5" class="responses">
 		<tr>
 			<th class="col-questions">Question</th>
@@ -39,21 +39,23 @@
 			<th>Comments</th>
 		</tr>
 
-		<% if @applicant.position && @applicant.position.title.downcase.include?('painting') %>
+		<% if @applicant.position && @applicant.position.title.downcase.include?('art ed') %>
+
 			<tr>
 				<td>
-					<strong>Teaching Experience</strong><br>
-					5) Strong record of teaching Painting &amp; Foundations<br>
-					4) Good record of teaching Painting &amp; Foundations<br>
-					3) Taught only Painting<br>
-					2) Taught only Foundations<br>
-					1) Taught only as a TA or none
+					<strong>Teaching Experience (University/K-12)</strong><br>
+					5) Extensive record of teaching University and K-12 all levels<br>
+					4) Significant record of teaching University and/or K-12 all levels<br>
+					3) Limited teaching experience only in University or K-12<br>
+					2) Limited teaching experience only at TA level<br>
+					1) No significant teaching experience at required levels
+
 				</td>
 				<td class="selected-value-<%= @member_response.q1a %>">
-					<%= f.radio_button("q1a", "5") %> 5 
-					<%= f.radio_button("q1a", "4") %> 4 
-					<%= f.radio_button("q1a", "3") %> 3 
-					<%= f.radio_button("q1a", "2") %> 2 
+					<%= f.radio_button("q1a", "5") %> 5
+					<%= f.radio_button("q1a", "4") %> 4
+					<%= f.radio_button("q1a", "3") %> 3
+					<%= f.radio_button("q1a", "2") %> 2
 					<%= f.radio_button("q1a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q1a", "0") %> No Response
 				</td>
@@ -62,44 +64,45 @@
 			<tr>
 				<td>
 					<strong>Administrative Experience &amp; Service Record</strong><br>
-					5) Exceptional experience in both areas<br>
-					4) Strong experience in both areas<br>
-					3) Good experience in both areas<br>
-					2) Some experience in one area of the other<br>
-					1) Little experience in either area
+					5) Exceptional experience in curriculum and program development, contemporary practices, and assessment<br>
+					4) Strong experience in curriculum and program development, contemporary practices, and assessment<br>
+					3) Good experience in curriculum and program development, contemporary practices, and assessment<br>
+					2) Some experience in curriculum and program development, contemporary practices, and assessment<br>
+					1) Little experience in curriculum and program development, contemporary practices, and assessment
+
 				</td>
 				<td class="selected-value-<%= @member_response.q2a %>">
-					<%= f.radio_button("q2a", "5") %> 5 
-					<%= f.radio_button("q2a", "4") %> 4 
-					<%= f.radio_button("q2a", "3") %> 3 
-					<%= f.radio_button("q2a", "2") %> 2 
-					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q2a", "5") %> 5
+					<%= f.radio_button("q2a", "4") %> 4
+					<%= f.radio_button("q2a", "3") %> 3
+					<%= f.radio_button("q2a", "2") %> 2
+					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q2a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q2c, :rows => 3 %></td>
 			</tr>
 			<tr>
 				<td>
-					<strong>Exhibition/Publication Experience</strong><br>
+					<strong>Publication &amp; Professional Development Experience</strong><br>
 					5) Exceptional, broad experience<br>
 					4) Good experience<br>
 					3) Some experience<br>
 					2) Little experience<br>
-					1) No significant experience 
+					1) No significant experience
 				</td>
 				<td class="selected-value-<%= @member_response.q3a %>">
-					<%= f.radio_button("q3a", "5") %> 5 
-					<%= f.radio_button("q3a", "4") %> 4 
-					<%= f.radio_button("q3a", "3") %> 3 
-					<%= f.radio_button("q3a", "2") %> 2 
-					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q3a", "5") %> 5
+					<%= f.radio_button("q3a", "4") %> 4
+					<%= f.radio_button("q3a", "3") %> 3
+					<%= f.radio_button("q3a", "2") %> 2
+					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q3a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q3c, :rows => 3 %></td>
 			</tr>
 			<tr>
 				<td>
-					<strong>Desire to pursue Teaching as a Career</strong><br>
+					<strong>Desire to pursue Teaching as a Career &amp; ability to structure Field Experiences</strong><br>
 					5) Strongly expressed interest/notes Belmont values<br>
 					4) Firmly expressed interest in teaching <br>
 					3) Modestly expressed interest in teaching <br>
@@ -107,73 +110,73 @@
 					1) No genuinely expressed interest in teaching
 				</td>
 				<td class="selected-value-<%= @member_response.q4a %>">
-					<%= f.radio_button("q4a", "5") %> 5 
-					<%= f.radio_button("q4a", "4") %> 4 
-					<%= f.radio_button("q4a", "3") %> 3 
-					<%= f.radio_button("q4a", "2") %> 2 
-					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q4a", "5") %> 5
+					<%= f.radio_button("q4a", "4") %> 4
+					<%= f.radio_button("q4a", "3") %> 3
+					<%= f.radio_button("q4a", "2") %> 2
+					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q4a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q4c, :rows => 3 %></td>
 			</tr>
 			<tr>
 				<td>
-					<strong>Response to Mission/Vision/Values Statement</strong><br>
-					5) Passionate, insightful and relevant <br>
-					4) Thoughtful and considerate <br>
-					3) Informative yet mediocre <br>
-					2) Platitudinous and cliched <br>
-					1) Weak, vague or evasive
-				</td>
-				<td class="selected-value-<%= @member_response.q5a %>">
-					<%= f.radio_button("q5a", "5") %> 5 
-					<%= f.radio_button("q5a", "4") %> 4 
-					<%= f.radio_button("q5a", "3") %> 3 
-					<%= f.radio_button("q5a", "2") %> 2 
-					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span> 
-					<%= f.radio_button("q5a", "0") %> No Response
-				</td>
-				<td><%= f.text_area :q5c, :rows => 3 %></td>
-			</tr>
-			<tr>
-				<td>
-					<strong>Cover Letter</strong><br>
+					<strong>Cover Letter &amp; Mission/Vision Statement</strong><br>
 					5) Clear enthusiasm for Belmont/how they fit in dept<br>
 					4) Clearly explains how they fit into dept or Belmont <br>
 					3) Explains fit into dept or Belmont/lacks enthusiasm<br>
 					2) Some explanation of fit into dept or Belmont <br>
 					1) Minimal explanation of fit into dept or Belmont
 				</td>
+				<td class="selected-value-<%= @member_response.q5a %>">
+					<%= f.radio_button("q5a", "5") %> 5
+					<%= f.radio_button("q5a", "4") %> 4
+					<%= f.radio_button("q5a", "3") %> 3
+					<%= f.radio_button("q5a", "2") %> 2
+					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q5a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q5c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Ability to Complement Art Dept Faculty</strong><br>
+					5) Brings fine ideas, experience &amp; growth potential<br>
+					4) Brings good ideas, experience &amp; growth potential<br>
+					3) Brings some ideas, experience &amp; growth potential<br> 
+					2) Brings few ideas experience, some potential<br>
+					1) Brings no worthy ideas, experience; no potential
+				</td>
 				<td class="selected-value-<%= @member_response.q6a %>">
-					<%= f.radio_button("q6a", "5") %> 5 
-					<%= f.radio_button("q6a", "4") %> 4 
-					<%= f.radio_button("q6a", "3") %> 3 
-					<%= f.radio_button("q6a", "2") %> 2 
-					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q6a", "5") %> 5
+					<%= f.radio_button("q6a", "4") %> 4
+					<%= f.radio_button("q6a", "3") %> 3
+					<%= f.radio_button("q6a", "2") %> 2
+					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q6a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q6c, :rows => 3 %></td>
 			</tr>
 			<tr>
 				<td>
-					<strong>Personal Work</strong><br>
-					5) Extremely strong and diverse portfolio <br>
-					4) Strong and modestly diverse portfolio <br>
-					3) Diverse but average portfolio <br>
-					2) Average portfolio/little diversity<br>
-					1) Weak portfolio
+					<strong>Range of material and technical experience as demonstrated in research and creative activities</strong><br>
+					5) Demonstrates significant variety in technical expertise and material application<br>
+					4) Demonstrates moderate variety in technical expertise and material application<br>
+					3) Demonstrates little variety in terms of technical expertise and material application<br>
+					2) Is uniform in terms of technical expertise and material application<br>
+					1) These criteria cannot be determined by the research and/or creative activities
 				</td>
 				<td class="selected-value-<%= @member_response.q7a %>">
-					<%= f.radio_button("q7a", "5") %> 5 
-					<%= f.radio_button("q7a", "4") %> 4 
-					<%= f.radio_button("q7a", "3") %> 3 
-					<%= f.radio_button("q7a", "2") %> 2 
-					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q7a", "5") %> 5
+					<%= f.radio_button("q7a", "4") %> 4
+					<%= f.radio_button("q7a", "3") %> 3
+					<%= f.radio_button("q7a", "2") %> 2
+					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q7a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q7c, :rows => 3 %></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>
 					<strong>Student Work</strong><br>
 					5) Extremely strong and diverse portfolio <br>
@@ -183,11 +186,11 @@
 					1) Weak portfolio
 				</td>
 				<td class="selected-value-<%= @member_response.q8a %>">
-					<%= f.radio_button("q8a", "5") %> 5 
-					<%= f.radio_button("q8a", "4") %> 4 
-					<%= f.radio_button("q8a", "3") %> 3 
-					<%= f.radio_button("q8a", "2") %> 2 
-					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q8a", "5") %> 5
+					<%= f.radio_button("q8a", "4") %> 4
+					<%= f.radio_button("q8a", "3") %> 3
+					<%= f.radio_button("q8a", "2") %> 2
+					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q8a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q8c, :rows => 3 %></td>
@@ -203,11 +206,185 @@
 
 				</td>
 				<td class="selected-value-<%= @member_response.q9a %>">
-					<%= f.radio_button("q9a", "5") %> 5 
-					<%= f.radio_button("q9a", "4") %> 4 
-					<%= f.radio_button("q9a", "3") %> 3 
-					<%= f.radio_button("q9a", "2") %> 2 
-					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q9a", "5") %> 5
+					<%= f.radio_button("q9a", "4") %> 4
+					<%= f.radio_button("q9a", "3") %> 3
+					<%= f.radio_button("q9a", "2") %> 2
+					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q9a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q9c, :rows => 3 %></td>
+			</tr> -->
+
+		<% elsif @applicant.position && @applicant.position.title.downcase.include?('painting') %>
+			<tr>
+				<td>
+					<strong>Teaching Experience</strong><br>
+					5) Strong record of teaching Painting &amp; Foundations<br>
+					4) Good record of teaching Painting &amp; Foundations<br>
+					3) Taught only Painting<br>
+					2) Taught only Foundations<br>
+					1) Taught only as a TA or none
+				</td>
+				<td class="selected-value-<%= @member_response.q1a %>">
+					<%= f.radio_button("q1a", "5") %> 5
+					<%= f.radio_button("q1a", "4") %> 4
+					<%= f.radio_button("q1a", "3") %> 3
+					<%= f.radio_button("q1a", "2") %> 2
+					<%= f.radio_button("q1a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q1a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q1c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Administrative Experience &amp; Service Record</strong><br>
+					5) Exceptional experience in both areas<br>
+					4) Strong experience in both areas<br>
+					3) Good experience in both areas<br>
+					2) Some experience in one area of the other<br>
+					1) Little experience in either area
+				</td>
+				<td class="selected-value-<%= @member_response.q2a %>">
+					<%= f.radio_button("q2a", "5") %> 5
+					<%= f.radio_button("q2a", "4") %> 4
+					<%= f.radio_button("q2a", "3") %> 3
+					<%= f.radio_button("q2a", "2") %> 2
+					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q2a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q2c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Exhibition/Publication Experience</strong><br>
+					5) Exceptional, broad experience<br>
+					4) Good experience<br>
+					3) Some experience<br>
+					2) Little experience<br>
+					1) No significant experience
+				</td>
+				<td class="selected-value-<%= @member_response.q3a %>">
+					<%= f.radio_button("q3a", "5") %> 5
+					<%= f.radio_button("q3a", "4") %> 4
+					<%= f.radio_button("q3a", "3") %> 3
+					<%= f.radio_button("q3a", "2") %> 2
+					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q3a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q3c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Desire to pursue Teaching as a Career</strong><br>
+					5) Strongly expressed interest/notes Belmont values<br>
+					4) Firmly expressed interest in teaching <br>
+					3) Modestly expressed interest in teaching <br>
+					2) Minimally expressed interest in teaching <br>
+					1) No genuinely expressed interest in teaching
+				</td>
+				<td class="selected-value-<%= @member_response.q4a %>">
+					<%= f.radio_button("q4a", "5") %> 5
+					<%= f.radio_button("q4a", "4") %> 4
+					<%= f.radio_button("q4a", "3") %> 3
+					<%= f.radio_button("q4a", "2") %> 2
+					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q4a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q4c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Response to Mission/Vision/Values Statement</strong><br>
+					5) Passionate, insightful and relevant <br>
+					4) Thoughtful and considerate <br>
+					3) Informative yet mediocre <br>
+					2) Platitudinous and cliched <br>
+					1) Weak, vague or evasive
+				</td>
+				<td class="selected-value-<%= @member_response.q5a %>">
+					<%= f.radio_button("q5a", "5") %> 5
+					<%= f.radio_button("q5a", "4") %> 4
+					<%= f.radio_button("q5a", "3") %> 3
+					<%= f.radio_button("q5a", "2") %> 2
+					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q5a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q5c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Cover Letter</strong><br>
+					5) Clear enthusiasm for Belmont/how they fit in dept<br>
+					4) Clearly explains how they fit into dept or Belmont <br>
+					3) Explains fit into dept or Belmont/lacks enthusiasm<br>
+					2) Some explanation of fit into dept or Belmont <br>
+					1) Minimal explanation of fit into dept or Belmont
+				</td>
+				<td class="selected-value-<%= @member_response.q6a %>">
+					<%= f.radio_button("q6a", "5") %> 5
+					<%= f.radio_button("q6a", "4") %> 4
+					<%= f.radio_button("q6a", "3") %> 3
+					<%= f.radio_button("q6a", "2") %> 2
+					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q6a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q6c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Personal Work</strong><br>
+					5) Extremely strong and diverse portfolio <br>
+					4) Strong and modestly diverse portfolio <br>
+					3) Diverse but average portfolio <br>
+					2) Average portfolio/little diversity<br>
+					1) Weak portfolio
+				</td>
+				<td class="selected-value-<%= @member_response.q7a %>">
+					<%= f.radio_button("q7a", "5") %> 5
+					<%= f.radio_button("q7a", "4") %> 4
+					<%= f.radio_button("q7a", "3") %> 3
+					<%= f.radio_button("q7a", "2") %> 2
+					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q7a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q7c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Student Work</strong><br>
+					5) Extremely strong and diverse portfolio <br>
+					4) Strong and modestly diverse portfolio <br>
+					3) Diverse but average portfolio <br>
+					2) Average portfolio/little diversity<br>
+					1) Weak portfolio
+				</td>
+				<td class="selected-value-<%= @member_response.q8a %>">
+					<%= f.radio_button("q8a", "5") %> 5
+					<%= f.radio_button("q8a", "4") %> 4
+					<%= f.radio_button("q8a", "3") %> 3
+					<%= f.radio_button("q8a", "2") %> 2
+					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span>
+					<%= f.radio_button("q8a", "0") %> No Response
+				</td>
+				<td><%= f.text_area :q8c, :rows => 3 %></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Ability to Complement Art Dept Faculty</strong><br>
+					5) Brings fine ideas, experience &amp; growth potential <br>
+					4) Brings good ideas, experience &amp; growth potential <br>
+					3) Brings some ideas, experience &amp; growth potential <br>
+					2) Brings few ideas experience, some potential <br>
+					1) Brings no worthy ideas, experience; no potential
+
+				</td>
+				<td class="selected-value-<%= @member_response.q9a %>">
+					<%= f.radio_button("q9a", "5") %> 5
+					<%= f.radio_button("q9a", "4") %> 4
+					<%= f.radio_button("q9a", "3") %> 3
+					<%= f.radio_button("q9a", "2") %> 2
+					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q9a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q9c, :rows => 3 %></td>
@@ -225,10 +402,10 @@
 					1) Teaching experience limited to Teaching Assistantship (or none at all)
 				</td>
 				<td class="selected-value-<%= @member_response.q1a %>">
-					<%= f.radio_button("q1a", "5") %> 5 
-					<%= f.radio_button("q1a", "4") %> 4 
-					<%= f.radio_button("q1a", "3") %> 3 
-					<%= f.radio_button("q1a", "2") %> 2 
+					<%= f.radio_button("q1a", "5") %> 5
+					<%= f.radio_button("q1a", "4") %> 4
+					<%= f.radio_button("q1a", "3") %> 3
+					<%= f.radio_button("q1a", "2") %> 2
 					<%= f.radio_button("q1a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q1a", "0") %> No Response
 				</td>
@@ -244,11 +421,11 @@
 					1) Little experience in either area
 				</td>
 				<td class="selected-value-<%= @member_response.q2a %>">
-					<%= f.radio_button("q2a", "5") %> 5 
-					<%= f.radio_button("q2a", "4") %> 4 
-					<%= f.radio_button("q2a", "3") %> 3 
-					<%= f.radio_button("q2a", "2") %> 2 
-					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q2a", "5") %> 5
+					<%= f.radio_button("q2a", "4") %> 4
+					<%= f.radio_button("q2a", "3") %> 3
+					<%= f.radio_button("q2a", "2") %> 2
+					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q2a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q2c, :rows => 3 %></td>
@@ -260,14 +437,14 @@
 					4) Good experience<br>
 					3) Some experience<br>
 					2) Little experience<br>
-					1) No significant experience 
+					1) No significant experience
 				</td>
 				<td class="selected-value-<%= @member_response.q3a %>">
-					<%= f.radio_button("q3a", "5") %> 5 
-					<%= f.radio_button("q3a", "4") %> 4 
-					<%= f.radio_button("q3a", "3") %> 3 
-					<%= f.radio_button("q3a", "2") %> 2 
-					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q3a", "5") %> 5
+					<%= f.radio_button("q3a", "4") %> 4
+					<%= f.radio_button("q3a", "3") %> 3
+					<%= f.radio_button("q3a", "2") %> 2
+					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q3a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q3c, :rows => 3 %></td>
@@ -282,11 +459,11 @@
 					1) No genuinely expressed interest in teaching
 				</td>
 				<td class="selected-value-<%= @member_response.q4a %>">
-					<%= f.radio_button("q4a", "5") %> 5 
-					<%= f.radio_button("q4a", "4") %> 4 
-					<%= f.radio_button("q4a", "3") %> 3 
-					<%= f.radio_button("q4a", "2") %> 2 
-					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q4a", "5") %> 5
+					<%= f.radio_button("q4a", "4") %> 4
+					<%= f.radio_button("q4a", "3") %> 3
+					<%= f.radio_button("q4a", "2") %> 2
+					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q4a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q4c, :rows => 3 %></td>
@@ -301,11 +478,11 @@
 					1) Weak, vague or evasive
 				</td>
 				<td class="selected-value-<%= @member_response.q5a %>">
-					<%= f.radio_button("q5a", "5") %> 5 
-					<%= f.radio_button("q5a", "4") %> 4 
-					<%= f.radio_button("q5a", "3") %> 3 
-					<%= f.radio_button("q5a", "2") %> 2 
-					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q5a", "5") %> 5
+					<%= f.radio_button("q5a", "4") %> 4
+					<%= f.radio_button("q5a", "3") %> 3
+					<%= f.radio_button("q5a", "2") %> 2
+					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q5a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q5c, :rows => 3 %></td>
@@ -320,11 +497,11 @@
 					1) Minimal explanation of fit into dept or Belmont
 				</td>
 				<td class="selected-value-<%= @member_response.q6a %>">
-					<%= f.radio_button("q6a", "5") %> 5 
-					<%= f.radio_button("q6a", "4") %> 4 
-					<%= f.radio_button("q6a", "3") %> 3 
-					<%= f.radio_button("q6a", "2") %> 2 
-					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q6a", "5") %> 5
+					<%= f.radio_button("q6a", "4") %> 4
+					<%= f.radio_button("q6a", "3") %> 3
+					<%= f.radio_button("q6a", "2") %> 2
+					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q6a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q6c, :rows => 3 %></td>
@@ -339,11 +516,11 @@
 					1) Weak portfolio
 				</td>
 				<td class="selected-value-<%= @member_response.q7a %>">
-					<%= f.radio_button("q7a", "5") %> 5 
-					<%= f.radio_button("q7a", "4") %> 4 
-					<%= f.radio_button("q7a", "3") %> 3 
-					<%= f.radio_button("q7a", "2") %> 2 
-					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q7a", "5") %> 5
+					<%= f.radio_button("q7a", "4") %> 4
+					<%= f.radio_button("q7a", "3") %> 3
+					<%= f.radio_button("q7a", "2") %> 2
+					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q7a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q7c, :rows => 3 %></td>
@@ -358,11 +535,11 @@
 					1) Weak portfolio
 				</td>
 				<td class="selected-value-<%= @member_response.q8a %>">
-					<%= f.radio_button("q8a", "5") %> 5 
-					<%= f.radio_button("q8a", "4") %> 4 
-					<%= f.radio_button("q8a", "3") %> 3 
-					<%= f.radio_button("q8a", "2") %> 2 
-					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q8a", "5") %> 5
+					<%= f.radio_button("q8a", "4") %> 4
+					<%= f.radio_button("q8a", "3") %> 3
+					<%= f.radio_button("q8a", "2") %> 2
+					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q8a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q8c, :rows => 3 %></td>
@@ -378,11 +555,11 @@
 
 				</td>
 				<td class="selected-value-<%= @member_response.q9a %>">
-					<%= f.radio_button("q9a", "5") %> 5 
-					<%= f.radio_button("q9a", "4") %> 4 
-					<%= f.radio_button("q9a", "3") %> 3 
-					<%= f.radio_button("q9a", "2") %> 2 
-					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q9a", "5") %> 5
+					<%= f.radio_button("q9a", "4") %> 4
+					<%= f.radio_button("q9a", "3") %> 3
+					<%= f.radio_button("q9a", "2") %> 2
+					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q9a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q9c, :rows => 3 %></td>
@@ -399,11 +576,11 @@
 
 				</td>
 				<td class="selected-value-<%= @member_response.q10a %>">
-					<%= f.radio_button("q10a", "5") %> 5 
-					<%= f.radio_button("q10a", "4") %> 4 
-					<%= f.radio_button("q10a", "3") %> 3 
-					<%= f.radio_button("q10a", "2") %> 2 
-					<%= f.radio_button("q10a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q10a", "5") %> 5
+					<%= f.radio_button("q10a", "4") %> 4
+					<%= f.radio_button("q10a", "3") %> 3
+					<%= f.radio_button("q10a", "2") %> 2
+					<%= f.radio_button("q10a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q10a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q10c, :rows => 3 %></td>
@@ -421,10 +598,10 @@
 					1) No teaching experience
 				</td>
 				<td class="selected-value-<%= @member_response.q1a %>">
-					<%= f.radio_button("q1a", "5") %> 5 
-					<%= f.radio_button("q1a", "4") %> 4 
-					<%= f.radio_button("q1a", "3") %> 3 
-					<%= f.radio_button("q1a", "2") %> 2 
+					<%= f.radio_button("q1a", "5") %> 5
+					<%= f.radio_button("q1a", "4") %> 4
+					<%= f.radio_button("q1a", "3") %> 3
+					<%= f.radio_button("q1a", "2") %> 2
 					<%= f.radio_button("q1a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q1a", "0") %> No Response
 				</td>
@@ -440,11 +617,11 @@
 					1) No darkroom experience
 				</td>
 				<td class="selected-value-<%= @member_response.q2a %>">
-					<%= f.radio_button("q2a", "5") %> 5 
-					<%= f.radio_button("q2a", "4") %> 4 
-					<%= f.radio_button("q2a", "3") %> 3 
-					<%= f.radio_button("q2a", "2") %> 2 
-					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q2a", "5") %> 5
+					<%= f.radio_button("q2a", "4") %> 4
+					<%= f.radio_button("q2a", "3") %> 3
+					<%= f.radio_button("q2a", "2") %> 2
+					<%= f.radio_button("q2a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q2a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q2c, :rows => 3 %></td>
@@ -459,11 +636,11 @@
 					1) No digital experience experience
 				</td>
 				<td class="selected-value-<%= @member_response.q3a %>">
-					<%= f.radio_button("q3a", "5") %> 5 
-					<%= f.radio_button("q3a", "4") %> 4 
-					<%= f.radio_button("q3a", "3") %> 3 
-					<%= f.radio_button("q3a", "2") %> 2 
-					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q3a", "5") %> 5
+					<%= f.radio_button("q3a", "4") %> 4
+					<%= f.radio_button("q3a", "3") %> 3
+					<%= f.radio_button("q3a", "2") %> 2
+					<%= f.radio_button("q3a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q3a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q3c, :rows => 3 %></td>
@@ -478,11 +655,11 @@
 					1) Reasons for teaching unknown
 				</td>
 				<td class="selected-value-<%= @member_response.q4a %>">
-					<%= f.radio_button("q4a", "5") %> 5 
-					<%= f.radio_button("q4a", "4") %> 4 
-					<%= f.radio_button("q4a", "3") %> 3 
-					<%= f.radio_button("q4a", "2") %> 2 
-					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q4a", "5") %> 5
+					<%= f.radio_button("q4a", "4") %> 4
+					<%= f.radio_button("q4a", "3") %> 3
+					<%= f.radio_button("q4a", "2") %> 2
+					<%= f.radio_button("q4a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q4a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q4c, :rows => 3 %></td>
@@ -497,11 +674,11 @@
 					1) Sparse or vague response to mission/vision
 				</td>
 				<td class="selected-value-<%= @member_response.q5a %>">
-					<%= f.radio_button("q5a", "5") %> 5 
-					<%= f.radio_button("q5a", "4") %> 4 
-					<%= f.radio_button("q5a", "3") %> 3 
-					<%= f.radio_button("q5a", "2") %> 2 
-					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q5a", "5") %> 5
+					<%= f.radio_button("q5a", "4") %> 4
+					<%= f.radio_button("q5a", "3") %> 3
+					<%= f.radio_button("q5a", "2") %> 2
+					<%= f.radio_button("q5a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q5a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q5c, :rows => 3 %></td>
@@ -516,11 +693,11 @@
 					1) Minimal standard cover letter
 				</td>
 				<td class="selected-value-<%= @member_response.q6a %>">
-					<%= f.radio_button("q6a", "5") %> 5 
-					<%= f.radio_button("q6a", "4") %> 4 
-					<%= f.radio_button("q6a", "3") %> 3 
-					<%= f.radio_button("q6a", "2") %> 2 
-					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q6a", "5") %> 5
+					<%= f.radio_button("q6a", "4") %> 4
+					<%= f.radio_button("q6a", "3") %> 3
+					<%= f.radio_button("q6a", "2") %> 2
+					<%= f.radio_button("q6a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q6a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q6c, :rows => 3 %></td>
@@ -535,11 +712,11 @@
 					1) Weak portfolio
 				</td>
 				<td class="selected-value-<%= @member_response.q7a %>">
-					<%= f.radio_button("q7a", "5") %> 5 
-					<%= f.radio_button("q7a", "4") %> 4 
-					<%= f.radio_button("q7a", "3") %> 3 
-					<%= f.radio_button("q7a", "2") %> 2 
-					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q7a", "5") %> 5
+					<%= f.radio_button("q7a", "4") %> 4
+					<%= f.radio_button("q7a", "3") %> 3
+					<%= f.radio_button("q7a", "2") %> 2
+					<%= f.radio_button("q7a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q7a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q7c, :rows => 3 %></td>
@@ -554,11 +731,11 @@
 					1) Weak portfolio
 				</td>
 				<td class="selected-value-<%= @member_response.q8a %>">
-					<%= f.radio_button("q8a", "5") %> 5 
-					<%= f.radio_button("q8a", "4") %> 4 
-					<%= f.radio_button("q8a", "3") %> 3 
-					<%= f.radio_button("q8a", "2") %> 2 
-					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q8a", "5") %> 5
+					<%= f.radio_button("q8a", "4") %> 4
+					<%= f.radio_button("q8a", "3") %> 3
+					<%= f.radio_button("q8a", "2") %> 2
+					<%= f.radio_button("q8a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q8a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q8c, :rows => 3 %></td>
@@ -573,11 +750,11 @@
 					1) Brings no new ideas and not a strong fit
 				</td>
 				<td class="selected-value-<%= @member_response.q9a %>">
-					<%= f.radio_button("q9a", "5") %> 5 
-					<%= f.radio_button("q9a", "4") %> 4 
-					<%= f.radio_button("q9a", "3") %> 3 
-					<%= f.radio_button("q9a", "2") %> 2 
-					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span> 
+					<%= f.radio_button("q9a", "5") %> 5
+					<%= f.radio_button("q9a", "4") %> 4
+					<%= f.radio_button("q9a", "3") %> 3
+					<%= f.radio_button("q9a", "2") %> 2
+					<%= f.radio_button("q9a", "1") %> 1 <span class="spacer">&nbsp;</span>
 					<%= f.radio_button("q9a", "0") %> No Response
 				</td>
 				<td><%= f.text_area :q9c, :rows => 3 %></td>
@@ -588,14 +765,14 @@
 			</tr>
 		<% end %>
 	</table>
-	
+
 	<div class="field general_comments">
 		<%= f.label :general_comments %> <br>
 		<%= f.text_area :general_comments, :rows => 6, :cols => 80 %>
 	</div>
-	
+
 	<p class="skype-recommendation-question <%= 'recommended' if @member_response.skype_vote == true %>">Do you recommend <%= @applicant.name %> to be on the Skype interview list? <%= f.check_box :skype_vote %> Yes</p>
-	
+
 	<p><%= f.submit "Save Evaluation" %> <%= link_to "Back", position_applicants_url(@applicant.position) %></p>
 <% end %>
 
