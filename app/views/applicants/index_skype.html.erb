@@ -24,7 +24,7 @@
 		<td class="col-date"><%= applicant.skype_date.to_s(:pretty) if applicant.skype_date != nil %></td>
 		<td class="col-average"><%= applicant.average_score %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %>
-    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
+    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.admin? %></td>
 		<td><%= link_to 'Watch Interview', skype_interview_recording_url(applicant.skype_interview_recording) if applicant.skype_interview_recording %></td>
   </tr>
 <% end %>

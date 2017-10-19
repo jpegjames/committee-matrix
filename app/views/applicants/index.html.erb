@@ -20,12 +20,12 @@
     <th class="col-stddev"><%= link_to "Standard Deviation", position_applicants_url(position_id: params[:position_id], sort: "deviation") %></th>
     <th class="col-skype"><%= link_to "Skype Votes", position_applicants_url(position_id: params[:position_id], sort: "skype") %></th>
     <th colspan="2"><%= image_tag("click_to_evaluate.png") %></th>
-		<% if @current_member.id == 1 %>
+		<% if @current_member.admin? %>
 	    <th class="col-skype-add"><%= link_to "Add to Skype List", position_applicants_url(position_id: params[:position_id], sort: "skypelist") %></th>
 		<% end %>
   </tr>
 
-<% if @current_member.id == 1 %>
+<% if @current_member.admin? %>
 	<style type="text/css" media="screen">
 		.skype-yes, .skype-yes td {
 			background: rgb(50, 152, 50) !important;
@@ -57,8 +57,8 @@
 		<td class="col-stddev"><%= applicant.average_score_precision %></td>
 		<td class="col-skype"><%= applicant.skype_vote_total %></td>
 		<td><%= link_to 'Evaluate', evaluate_url(applicant) %>
-    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.id == 1 %></td>
-		<% if @current_member.id == 1 %>
+    <td><%= link_to 'Show Details', applicant %> <%= link_to 'Edit', edit_applicant_path(applicant) if @current_member.admin? %></td>
+		<% if @current_member.admin? %>
 	  	<td class="col-skype-add"><%= link_to "Yes", :action => 'update_skype_list', :value => 'true', :id => applicant.id %> | <%= link_to "No", :action => 'update_skype_list', :value => 'false', :id => applicant.id %> | <%= link_to "Clear", :action => 'update_skype_list', :value => 'clear', :id => applicant.id %></td>
 		<% end %>
   </tr>

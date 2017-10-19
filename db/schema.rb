@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160111110451) do
+ActiveRecord::Schema.define(:version => 20171019231959) do
 
   create_table "applicant_files", :force => true do |t|
     t.integer  "applicant_id"
@@ -77,8 +77,9 @@ ActiveRecord::Schema.define(:version => 20160111110451) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "admin",           :default => false
   end
 
   create_table "positions", :force => true do |t|
