@@ -100,7 +100,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    mysql2 (0.3.10)
+    mysql2 (0.4.9)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
