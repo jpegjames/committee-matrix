@@ -6,9 +6,9 @@ class ApplicantsController < ApplicationController
 
     sort_param = params[:sort]
     sort_param ||= session[:sort]
-    
+
     session[:sort] = params[:sort] if params[:sort] != nil
-    
+
     case sort_param
     when "fname"
       sort = "fname ASC"
@@ -66,19 +66,19 @@ class ApplicantsController < ApplicationController
       format.json { render :json => @applicant }
     end
   end
-  
+
   # GET /applicants/1/evalute
   def evaluate
     @applicant = Applicant.find(params[:id])
     @member_response = @applicant.member_responses.find_or_initialize_by_member_id(@current_member.id)
   end
-  
+
   # POST /applicants/1/evalute/save
   def save_evaluation
     @applicant = Applicant.find(params[:id])
     @member_response = @applicant.member_responses.find_or_initialize_by_member_id(@current_member.id)
     @member_response.update_attributes(params[:member_response])
-    
+
     redirect_to position_applicants_url(@applicant.position), :notice => "Evaluation for #{@applicant} has been saved."
   end
 
@@ -130,15 +130,15 @@ class ApplicantsController < ApplicationController
       end
     end
   end
-  
+
   def update_skype_list
     ## For easy sorting, skype_list values:
     # 3 => added to skype list
     # 2 => undecided
     # 1 => not added to skype list
-    
+
     @applicant = Applicant.find(params[:id])
-    
+
     case params[:value]
     when "true"
       @applicant.skype_list = 3
@@ -147,9 +147,9 @@ class ApplicantsController < ApplicationController
     else
       @applicant.skype_list = 2
     end
-    
-    
-    
+
+
+
     respond_to do |format|
       if @applicant.save
         format.html { redirect_to position_applicants_url(@applicant.position), :notice => 'The Skype list was successfully updated.' }
