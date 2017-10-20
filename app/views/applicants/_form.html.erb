@@ -22,8 +22,8 @@
   <div class="field">
     <%= f.label :position_id %><br />
     <% if Position.all.count == 1 %>
-      <%= f.hidden_tag :position_id %>
-      <%= Position.first.title %>
+      <%= f.hidden_field :position_id %>
+      <b><%= Position.first.title %></b>
     <% else %>
       <%= f.select :position_id, Position.all.collect{ |p| [p.title, p.id] }, { include_blank: true } %>
     <% end %>

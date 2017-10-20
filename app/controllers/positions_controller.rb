@@ -6,7 +6,7 @@ class PositionsController < ApplicationController
 
     respond_to do |format|
       if @positions.count == 1
-        format.html {redirect_to @positions.first}
+        format.html {redirect_to position_applicants_path(@positions.first)}
       else
         format.html # index.html.erb
       end

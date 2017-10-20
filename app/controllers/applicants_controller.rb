@@ -86,7 +86,7 @@ class ApplicantsController < ApplicationController
   # GET /applicants/new.json
   def new
     @applicant = Applicant.new
-    @applicant.position_id = Position.first if Position.count == 1
+    @applicant.position_id = Position.first.id if Position.count == 1
 
     respond_to do |format|
       format.html # new.html.erb
