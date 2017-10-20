@@ -5,7 +5,11 @@ class PositionsController < ApplicationController
     @positions = Position.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      if @positions.count == 1
+        format.html {redirect_to @positions.first}
+      else
+        format.html # index.html.erb
+      end
       format.json { render json: @positions }
     end
   end
