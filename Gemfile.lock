@@ -100,7 +100,6 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    mysql2 (0.3.21)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -112,6 +111,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    pg (1.1.4)
     polyglot (0.3.5)
     power_assert (0.2.7)
     pry (0.10.3)
@@ -196,9 +196,9 @@ DEPENDENCIES
   mechanize
   mocha
   multipart-post
-  mysql2 (~> 0.3.21)
   nested_form
   paperclip (~> 2.4)
+  pg
   pry
   pry-rails
   rails (= 3.2.21)
@@ -209,5 +209,8 @@ DEPENDENCIES
   test-unit
   uglifier (>= 1.0.3)
 
+RUBY VERSION
+   ruby 2.4.9p362
+
 BUNDLED WITH
-   1.16.3
+   1.17.3
