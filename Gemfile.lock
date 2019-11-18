@@ -100,7 +100,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    mysql2 (0.3.10)
+    mysql2 (0.3.21)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -175,9 +175,6 @@ GEM
     unf_ext (0.0.7.1)
     uniform_notifier (1.9.0)
     webrobots (0.1.2)
-    xray-rails (0.1.18)
-      coffee-rails
-      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
@@ -199,7 +196,7 @@ DEPENDENCIES
   mechanize
   mocha
   multipart-post
-  mysql2
+  mysql2 (~> 0.3.21)
   nested_form
   paperclip (~> 2.4)
   pry
@@ -211,7 +208,6 @@ DEPENDENCIES
   sqlite3
   test-unit
   uglifier (>= 1.0.3)
-  xray-rails
 
 BUNDLED WITH
-   1.11.2
+   1.16.3

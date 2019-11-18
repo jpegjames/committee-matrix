@@ -10,7 +10,7 @@ gem 'aws-sdk'
 
 gem 'multipart-post'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.21'
 
 gem "fastercsv"
 
@@ -39,7 +39,7 @@ group :development do
   # gem 'rb-fsevent',              :require => false
   # gem 'rubocop'
   gem 'sqlite3'
-  gem 'xray-rails'
+  # gem 'xray-rails'
   # gem 'unicorn'
 end
 
@@ -95,4 +95,3 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 #gem 'ruby-debug'
-
