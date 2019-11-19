@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby "2.4.9"
 
+# https://devcenter.heroku.com/articles/rails-unicorn
+gem 'unicorn'
+
 gem 'rails', '3.2.21'
 
 gem "rake"
