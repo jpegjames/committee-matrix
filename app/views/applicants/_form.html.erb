@@ -1,0 +1,50 @@
+<%= form_for @applicant, html: { multipart; true } do |f| %>
+  <% if @applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+
+      <ul>
+      <% @applicant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname, "First Name" %><br />
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname, "Last Name" %><br />
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :position_id %><br />
+    <% if Position.all.count == 1 %>
+      <%= f.hidden_field :position_id %>
+      <b><%= Position.first.title %></b>
+    <% else %>
+      <%= f.select :position_id, Position.all.collect{ |p| [p.title, p.id] }, { include_blank: true } %>
+    <% end %>
+  </div>
+
+
+  <br>
+  <div class="field">
+    <%= f.label :date_applied %><br />
+    <%= f.date_select :date_applied %>
+  </div>
+	<div class="field">
+    <%= f.label :skype_date, 'Skype Date/Time (if applicable)' %><br />
+    <%= f.datetime_select :skype_date, {include_blank: true} %>
+  </div>
+	<div class="field">
+    <!-- files -->
+	</div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
