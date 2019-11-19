@@ -33,7 +33,7 @@
   <br>
   <div class="field">
     <%= f.label :date_applied %><br />
-    <%= f.date_select :date_applied %>
+    <%= f.date_select :date_applied, {include_blank: true} %>
   </div>
 	<div class="field">
     <%= f.label :skype_date, 'Skype Date/Time (if applicable)' %><br />
