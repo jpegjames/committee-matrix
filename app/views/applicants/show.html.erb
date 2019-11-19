@@ -156,6 +156,21 @@
 			<% end %>
 		</td>
 	</tr>
+	<tr>
+		<td>
+			<strong>Ability to Complement Art Dept Talent</strong>
+		</td>
+		<% @responses.each do |response| %>
+			<td class="selected-value selected-value-<%= response.q9a %>"><%= response.q9a if response.q9a != 0 %></td>
+		<% end %>
+		<td>
+			<% @responses.each do |response| %>
+				<% if response.q9c != "" %>
+					<b><%= response.member.name %>:</b> <%= response.q9c %><br>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
 </table>
 
 <h2>General Comments</h2>
