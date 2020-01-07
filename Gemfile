@@ -19,7 +19,7 @@ gem 'pg', '~> 0.11'
 
 gem "fastercsv"
 
-gem 'paperclip', "~> 2.4"
+gem 'paperclip', "~> 4.3"
 
 # https://github.com/danpal/attr_encryptor
 gem 'attr_encryptor'
